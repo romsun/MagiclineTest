@@ -1,24 +1,64 @@
-<!DOCTYPE HTML>  
-<html>  
-  <head>  
-    <meta name="viewport" content="width=320; user-scalable=no" />  
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">  
-    <title>PhoneGap</title>  
-              <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>  
-              <script type="text/javascript" charset="utf-8">  
-              var displayHello = function() {  
-                        var name =      document.getElementById("firstname").value;  
-                        navigator.notification.alert("Halo " + name);  
-            }  
-   </script>  
-  </head>  
-  <body onload="init();" id="bdy" >  
-            <div id="txt">  
-            <input   type="text" name="firstname" id="firstname" />  
-            </div>  
-            <div id ="btn">  
-    <a href="#" class="btn" onclick="displayHello();">Say Hello</a>  
-            </div>  
-        </div>  
-  </body>  
-</html
+<?php
+?>
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<script type="text/javascript" src="jquery-2.0.3.min.js">
+</script>
+<script type="text/javascript" >
+$(function() {
+$(".submit").click(function() {
+var phone = $("#phone").val();
+var mes = $("#mes").val();
+var dataString = 'phone='+ phone + '&mes=' + mes;
+
+if(phone=='' || mes=='')
+{
+$('.success').fadeOut(200).hide();
+$('.error').fadeOut(200).show();
+}
+else
+{
+$.ajax({
+type: "POST",
+url: "sms.php",
+data: dataString,
+success: function(){
+$('.success').fadeIn(200).show();
+$('.error').fadeOut(200).hide();
+}
+});
+}
+return false;
+});
+});
+</script>
+
+
+
+</head>
+<body>
+
+
+<form method="post" name="form">
+<ul><li>TO:<br>
+<input id="phone" name="phone" type="text" />
+</li><li>
+
+<TEXTAREA style="border: 1px silver solid;border-right: 1px silver solid; background: #F6CEE3;" cols=25 id="mes" name="mes" rows=5 wrap=hard>
+Message:
+</TEXTAREA>
+
+</li></ul>
+<div >
+<input type="submit" value="Submit" class="submit"/>
+<span class="error" style="display:none"> Please Enter Valid Data</span>
+<span class="success" style="display:none"> Registration Successfully</span>
+</div></form&gt;
+
+
+</body>
+</html>
+
