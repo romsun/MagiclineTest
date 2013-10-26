@@ -175,7 +175,7 @@ function clearBox(result)
 $(function()
 {
         $('#formAddData').submit(function () {
-            $.post('lm.put.php', $('#formAddData').serialize(), function (data, textStatus) {
+            $.post('http://citifren.com/lm/lm.put.php', $('#formAddData').serialize(), function (data, textStatus) {
                  $('#resultput').append(data);
             });
 
