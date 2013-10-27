@@ -3,7 +3,7 @@
 <head>
 <title>Create Contact</title>
  
-<script type="text/javascript" charset="utf-8" src="cordova-3.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 <script type="text/javascript" charset="utf-8">
  
 // Wait for PhoneGap to load
@@ -15,8 +15,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 // create
 var contact = navigator.contacts.create();
-contact.displayName = "Plumber";
-contact.nickname = "Plumber"; //specify both to support all devices
+contact.displayName = "KangMas";
+contact.nickname = "KangMasR"; //specify both to support all devices
 var name = new ContactName();
 name.givenName = "Mase";
 name.familyName = "Romsunpramudito";
