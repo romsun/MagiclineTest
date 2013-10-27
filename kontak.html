@@ -20,18 +20,29 @@
         navigator.contacts.find(fields, onSuccess, onError, options);
     }
 
+
+    function onSuccess(contacts) {
+        for (var i=0; i<contacts.length; i++) {
+            alert(contacts[i].displayName);
+            var phonenumber;
+            phonenumber = contacts[i].phoneNumbers[i];
+            $("ul").append("<li><a href=tel:"+phonenumber+">"+contacts[i].displayName+"</a></li>");
+        }
+    };
+
+
     // onSuccess: Get a snapshot of the current contacts
     //
     function onSuccess2(contacts) {
         for (var i=0; i<contacts.length; i++) {
-            console.log("Display Name = " + contacts[i].displayName);
+            console.log("Display Name = " + contacts[i].displayName[0]);
         }
     }
 
 
         // onSuccess: Get a snapshot of the current contacts
         //
-        function onSuccess(contacts) {
+        function onSuccess22(contacts) {
             console.log(contacts.length);
             for (var i=0; i<contacts.length; i++) {
                 var LI=$("#list").append('<li>'+contacts[i].displayName+'</li>');
