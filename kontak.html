@@ -16,17 +16,59 @@
         // find all contacts with 'Bob' in any name field
         var options = new ContactFindOptions();
         options.filter="";
-        var fields = ["displayName", "name"];
+        var fields = ["displayName",  "emails", "phoneNumbers", "photos"];
         navigator.contacts.find(fields, onSuccess, onError, options);
     }
 
     // onSuccess: Get a snapshot of the current contacts
     //
-    function onSuccess(contacts) {
+    function onSuccess2(contacts) {
         for (var i=0; i<contacts.length; i++) {
             console.log("Display Name = " + contacts[i].displayName);
         }
     }
+
+
+        // onSuccess: Get a snapshot of the current contacts
+        //
+        function onSuccess(contacts) {
+            console.log(contacts.length);
+            for (var i=0; i<contacts.length; i++) {
+                var LI=$("#list").append('<li>'+contacts[i].displayName+'</li>');
+
+                if (contacts[i].displayName) {
+                    for (var j=0; j<contacts[i].displayName.length; j++) {
+                        $(LI).append('<span>'+contacts[i].displayName[j].value+'</span><Br/>');
+                    }
+                }
+
+                if (contacts[i].phoneNumbers) {
+                    for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
+                        $(LI).append('<span>'+contacts[i].phoneNumbers[j].value+'</span><Br/>');
+                    }
+                }
+
+                if (contacts[i].emails) {
+                    for (var j=0; j<contacts[i].emails.length; j++) {
+                        $(LI).append('<span>'+contacts[i].emails[j].value+'</span><br/>');
+                    }
+                }
+
+                if (contacts[i].photos) {
+                    for (var j=0; j<contacts[i].photos.length; j++) {
+                        alert(contacts[i].photos[j].value);
+                        //$(LI).append('<span>'+contacts[i].photos[j].value+'</span><br/>');
+                    }
+                }
+                /*if (contacts[i].photos) {
+                    for (var j=0; j<contacts[i].photos.length; j++) {
+                        $(LI).append('<img src="'+contacts[i].photos[j].value+'"/><br/>');
+                    }
+                }*/
+            }
+        };
+
+
 
     // onError: Failed to get the contacts
     //
@@ -39,5 +81,10 @@
   <body>
     <h1>Daftar Kontak</h1>
     <p>Find Contacts</p>
+
+    <ul id="list">
+
+    </ul>
+
   </body>
 </html>
