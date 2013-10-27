@@ -16,6 +16,7 @@
         // find all contacts with 'Bob' in any name field
         var options = new ContactFindOptions();
         options.filter="";
+	options.multiple=true;
         var fields = ["displayName","phoneNumbers"];
         navigator.contacts.find(fields, onSuccess, onError, options);
     }
