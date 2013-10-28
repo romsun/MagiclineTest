@@ -24,12 +24,9 @@
 
     function onSuccess(contacts) {
         for (var i=0; i<contacts.length; i++) {
-            alert(contacts[i].displayName);
-            var phonenumber;
-            phonenumber = contacts[i].phoneNumbers[i];
-            $("ul").append("<li><a href=tel:"+phonenumber+">"+contacts[i].displayName+"</a></li>");
+            console.log("Display Name = " + contacts[i].displayName);
         }
-    };
+    }
 
 
     // onSuccess: Get a snapshot of the current contacts
@@ -78,7 +75,7 @@
                     }
                 }*/
             }
-        };
+        }
 
 
 
