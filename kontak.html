@@ -35,7 +35,7 @@
 
     // Wait for PhoneGap to load
     //
-    document.addEventListener("deviceready", onDeviceReady, false);
+    // document.addEventListener("deviceready", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -54,7 +54,7 @@
         for (var i=0; i<contacts.length; i++) {
             // console.log("Phone-Number = " + contacts[i].phoneNumbers);
 	    var LI=$("#list").append('<li>'+contacts[i].displayName+'</li>');
-
+	alert("Ready");
         }
     }
 
@@ -117,7 +117,21 @@
         alert('onError!');
     }
 
+
+var el = document.getElementById("list");
+el.addEventListener("deviceready", suksesYo, false);
+
     </script>
 
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
