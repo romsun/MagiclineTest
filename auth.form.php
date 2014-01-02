@@ -19,7 +19,7 @@
 
 
         <div data-role="header">
-        <h1><font color=#df0101>Please Login</font></h1>
+        <h1><font color=#df0101>Sumonggo Login</font></h1>
         </div><!-- /header -->
 <div data-role="content">
 
