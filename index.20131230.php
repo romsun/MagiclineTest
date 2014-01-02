@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+$cookiename = "citifren";
+$value = "08096795005";
+
+if (!isset($_COOKIE['citifren'])) {
+ // setcookie($cookiename,$value, time()+3600*24);
+ // Set non aktif - untuk Android IOS app set menggunakan javascript bukan PHP
+}
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -337,7 +346,6 @@ iframe {
   -moz-border-radius: 12px;
   -webkit-border-radius: 12px;
   border-radius: 12px;
-  width: 700px;
 
   -moz-box-shadow: 4px 4px 14px #000;
   -webkit-box-shadow: 4px 4px 14px #000;
@@ -486,9 +494,10 @@ function setWelcome()
   
 
 </head>
+<?php $pagebg = "#01a9db"; ?>
 
 <body onLoad="checkCookie()" bgcolor="#dedede" style="background-image:url();
-  background-color: #01a9db;
+  background-color: <?php echo $pagebg; ?>;
   background-repeat: no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -501,20 +510,20 @@ function setWelcome()
 	<div data-role="header">
 	<h1><font color="#dedede"><font color=#df0101>Citi</font><font color=#a4a4a4>Fren</font></font></h1>
     	<a href="#satu" onclick="setWelcome()" data-icon="home">Home</a>
-    	<a href="#dua" data-iconpos="right" data-icon="grid">></a>
+    	<a href="index.php#dua" data-iconpos="right" data-icon="grid">></a>
 
 	</div><!-- /header -->
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame'); onkan(); loadData();" onMouseOver="OFFremoveWelcome()">Chat</a></li>
+            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame'); onkan(); loadData();" onMouseOver=" removeWelcome()">Chat</a></li>
             <li><a data-icon="gear" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame')" onMouseOver="removeWelcome()">Call</a></li>
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#album">Albums</a></li>
 	</ul>
 
         </div><!-- /navbar -->
 
-<div data-role="content" style="padding:0; height:90%; width: 100%; background-color:#01a9db; ">
+<div data-role="content" style="padding:0; height:90%; width: 100%; background-color:<?php echo $pagebg; ?>; ">
 <script>
 function showcontact(id){
         if (document.getElementById){
@@ -527,12 +536,26 @@ function showcontact(id){
         }
 }
 </script>
+<?php //include("test.contacts.php");
+        $id = $_COOKIE['citifren'];
+?>
  
         <iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 90%; " src="">Form</iframe>
-<div id="auth" onClick="onkan(); loadData(); checkCookie(); offkan();" onMouseout="onkan(); loadData()" ><br><center>This is authentication page<br>Click here</center><br><br></div>
+<?php
+
+$cek_cookie = $_COOKIE[citifren];
+if ($cek_cookie !== "08096795005")
+{
+
+//echo "Your phone number: $cek_cookie";
+
+}
+
+?>
+<div id="auth" onClick="onkan(); loadData(); checkCookie();" onMouseout="onkan(); loadData()" ><br><center>This is authentication page<br>Click here</center><br><br></div>
 
 
-<div data-role="content"  id="chat_place"></div>
+<div id="chat_place"></div>
 
 <script>
 
@@ -671,17 +694,12 @@ function loadData(whotochat) {
 
         if(iso != 1) {
 	var whotochat = $('#whotochat').val();
-
-
         $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 500);
+        window.reloadData = window.setTimeout(loadData, 500)
         }).fadeIn("slow");
-
         }else  { window.clearTimeout(window.reloadData);  }
-
- 	// $(".boxshadow").css({"width:":"100%"});
 }
 
         // window.reloadData = 0; // store timer load data on page load, which sets timeout to reload again

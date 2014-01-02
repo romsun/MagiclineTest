@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+$cookiename = "citifren";
+$value = "08096795005";
+
+if (!isset($_COOKIE['citifren'])) {
+ // setcookie($cookiename,$value, time()+3600*24);
+ // Set non aktif - untuk Android IOS app set menggunakan javascript bukan PHP
+}
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -45,37 +54,6 @@ div#fullyaa.ui-collapsible div.ui-collapsible-content {
    left: 30%;
 }
 
-.divform {
-        background-color: #a9e2f3;
-        background-image: -moz-linear-gradient(top, #a9e2f3, #dedede);
-        position: relative;
-	width: 97%;
-        color: #000000;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 30px #dedede;
-        margin: 5px;
-        border: 1px solid #1AB5E0;
-        text-shadow: 0 0 1px #6e6e6e;
-        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;*/
-}
-
-.divforminput {
-        background-color: #a9e2f3;
-        background-image: -moz-linear-gradient(top, #a9e2f3, #dedede);
-        position: relative;
-        width: 99%;
-        right: 10px;
-        color: #000000;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 30px #dedede;
-        margin: 5px;
-        border: 1px solid #1AB5E0;
-        text-shadow: 0 0 1px #6e6e6e;
-        /* box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset; */
-}
-
 .gobutton {
         font-family: arial;
         font-size: 12px;
@@ -103,22 +81,6 @@ div.photo img{
         /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;*/
 }
 
-div.photoofweek img{
-        background-color: #a4a4a4;
-        background-image: -moz-linear-gradient(top, #848484, #a4a4a4);
-        position: relative;
-        color: #111111;
-        padding: 2px;
-        border-radius: 50px;
-        box-shadow: 15px 15px 15px #585858;
-        margin: 3px;
-        min-height: 25px;
-        border: 10px inset #d8d8d8;
-        text-shadow: 0 0 1px #6e6e6e;
-        /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;*/
-}
-
-
 div.callout {
         background-color: #a9e2f3;
         background-image: -moz-linear-gradient(top, #a9e2f3, #dedede);
@@ -134,8 +96,6 @@ div.callout {
 
         /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;*/
 }
-
-
 
 .callout.right::before {
         left: -29px;
@@ -329,27 +289,6 @@ iframe {
   filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=.1);
 }
 
-.boxshadow {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  margin-left: 25px;
-  margin-right: 30px;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  border-radius: 12px;
-  width: 700px;
-
-  -moz-box-shadow: 4px 4px 14px #000;
-  -webkit-box-shadow: 4px 4px 14px #000;
-  box-shadow: 4px 4px 14px #000;
-
-  -moz-transform:rotate(0deg);
-  -webkit-transform:rotate(0deg);
-  -o-transform:rotate(0deg);
-  -ms-transform:rotate(0deg);
-  filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=.1);
-}
-
 .model {
   width: 30px;
   margin-top: 5px;
@@ -454,41 +393,42 @@ var user=getCookie("citifren");
 if (user!="")
   {
   // alert("Welcome again " + user);
-
-  //      var aphone = document.getElementById("auth");
-  //      aphone.value = "Hiaia";
-  //var ganti = "Welcome";
-  //$('#auth').html(ganti);
-  $('#auth').load('http://citifren.com/chat/welcome.php');
   }
 else 
   {
-  // user = prompt("Please enter your phone number:","");
+  user = prompt("Please enter your phone number:","");
+  pass = prompt("Please enter your password:","");
   if (user!="" && user!=null)
     {
-    //setCookie("citifren",user,365);
+    setCookie("citifren",user,365);
+
+  //  $("#konfirmasi").load("http://citifren.com/auth.php",{'phone':phone});
+    	// var kon = httpGet("http://citifren.com/auth.php?phone="+phone+"&user="+user"");
+	// doWork(user,pass);
+    var kon;
+    kon = document.getElementById('konfirmasi').value; 
+
+    	if(kon == user)
+	{
+  	alert("Welcome " + user);
+  	}else{
+	alert("Error authentication ! Please try again"+kon);
+	}
+
+
     }
   }
 }
 // ---------------------------------------------------------------------------------------------
 
-function removeWelcome()
-  {
-  $('#auth').html('');
-  }
-
-function setWelcome()
-  {
-  $('#auth').load('http://citifren.com/chat/welcome.php');
-  }
-
 </script>
   
 
 </head>
+<?php $pagebg = "#01a9db"; ?>
 
 <body onLoad="checkCookie()" bgcolor="#dedede" style="background-image:url();
-  background-color: #01a9db;
+  background-color: <?php echo $pagebg; ?>;
   background-repeat: no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -500,21 +440,21 @@ function setWelcome()
 
 	<div data-role="header">
 	<h1><font color="#dedede"><font color=#df0101>Citi</font><font color=#a4a4a4>Fren</font></font></h1>
-    	<a href="#satu" onclick="setWelcome()" data-icon="home">Home</a>
-    	<a href="#dua" data-iconpos="right" data-icon="grid">></a>
+    	<a href="#satu" data-icon="home">Home</a>
+    	<a href="index.php#dua" data-iconpos="right" data-icon="grid">></a>
 
 	</div><!-- /header -->
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame'); onkan(); loadData();" onMouseOver="OFFremoveWelcome()">Chat</a></li>
-            <li><a data-icon="gear" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame')" onMouseOver="removeWelcome()">Call</a></li>
-            <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#album">Albums</a></li>
+            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="showcontact('contactFrame')">Chat</a></li>
+            <li><a data-icon="gear" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="showcontact('contactFrame')">Call</a></li>
+            <li><a data-icon="plus" data-role="button" href="#album">Albums</a></li>
 	</ul>
 
         </div><!-- /navbar -->
 
-<div data-role="content" style="padding:0; height:90%; width: 100%; background-color:#01a9db; ">
+<div data-role="content" style="padding:0; height:90%; width: 100%; background-color:<?php echo $pagebg; ?>; ">
 <script>
 function showcontact(id){
         if (document.getElementById){
@@ -527,12 +467,24 @@ function showcontact(id){
         }
 }
 </script>
+<?php //include("test.contacts.php");
+        $id = $_COOKIE['citifren'];
+?>
  
         <iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 90%; " src="">Form</iframe>
-<div id="auth" onClick="onkan(); loadData(); checkCookie(); offkan();" onMouseout="onkan(); loadData()" ><br><center>This is authentication page<br>Click here</center><br><br></div>
+<?php
 
+$cek_cookie = $_COOKIE[citifren];
+if ($cek_cookie !== "08096795005")
+{
 
-<div data-role="content"  id="chat_place"></div>
+//echo "Your phone number: $cek_cookie";
+
+}
+
+?>
+<div id="auth" onClick="loadData()">This is outhentication page</div>
+<div id="chat_place"></div>
 
 <script>
 
@@ -671,17 +623,12 @@ function loadData(whotochat) {
 
         if(iso != 1) {
 	var whotochat = $('#whotochat').val();
-
-
         $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 500);
+        window.reloadData = window.setTimeout(loadData, 500)
         }).fadeIn("slow");
-
         }else  { window.clearTimeout(window.reloadData);  }
-
- 	// $(".boxshadow").css({"width:":"100%"});
 }
 
         // window.reloadData = 0; // store timer load data on page load, which sets timeout to reload again
