@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+$cookiename = "citifren";
+$value = "08096795005";
+
+if (!isset($_COOKIE['citifren'])) {
+ // setcookie($cookiename,$value, time()+3600*24);
+ // Set non aktif - untuk Android IOS app set menggunakan javascript bukan PHP
+}
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -486,9 +495,10 @@ function setWelcome()
   
 
 </head>
+<?php $pagebg = "#01a9db"; ?>
 
 <body onLoad="checkCookie()" bgcolor="#dedede" style="background-image:url();
-  background-color: #01a9db;
+  background-color: <?php echo $pagebg; ?>;
   background-repeat: no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -514,7 +524,7 @@ function setWelcome()
 
         </div><!-- /navbar -->
 
-<div data-role="content" style="padding:0; height:90%; width: 100%; background-color:#01a9db; ">
+<div data-role="content" style="padding:0; height:90%; width: 100%; background-color:<?php echo $pagebg; ?>; ">
 <script>
 function showcontact(id){
         if (document.getElementById){
@@ -527,8 +537,22 @@ function showcontact(id){
         }
 }
 </script>
+<?php //include("test.contacts.php");
+        $id = $_COOKIE['citifren'];
+?>
  
         <iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 90%; " src="">Form</iframe>
+<?php
+
+$cek_cookie = $_COOKIE[citifren];
+if ($cek_cookie !== "08096795005")
+{
+
+//echo "Your phone number: $cek_cookie";
+
+}
+
+?>
 <div id="auth" onClick="onkan(); loadData(); checkCookie(); offkan();" onMouseout="onkan(); loadData()" ><br><center>This is authentication page<br>Click here</center><br><br></div>
 
 
