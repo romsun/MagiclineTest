@@ -676,7 +676,7 @@ function loadData(whotochat) {
         $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 1500);
+        window.reloadData = window.setTimeout(loadData, 500);
         }).fadeIn("slow");
 
         }else  { window.clearTimeout(window.reloadData);  }
