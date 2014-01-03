@@ -606,7 +606,7 @@ scrollTop: $("#pushframetop").offset().top
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px" id="chatboxe"></textarea>    
     </td><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
 
-    <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="onkan(); loadData();">
+    <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="getiframevalue(); onkan(); loadData();">
     </td></tr></table>
 
 </div>
@@ -686,10 +686,10 @@ function loadData(whotochat) {
 	var whotochat = $('#whotochat').val();
 
 
-        $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
+        $('#chat_place2').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 500);
+        window.reloadData = window.setTimeout(loadData, 1000);
         }).fadeIn("slow");
 
         }else  { window.clearTimeout(window.reloadData);  }
@@ -733,6 +733,16 @@ for(var i=0; i<ca.length; i++)
   }
 return "";
 }
+
+
+function getiframevalue(inputchat)
+{
+	var aphone = $("#contactFrame").contents().find("#inputchat")
+	
+	alert("Nilanya"+aphone);
+
+}
+
 
 
 </script>
