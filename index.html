@@ -542,7 +542,8 @@ function showcontact(id){
 <br>
 <br>
 
-<div id="auth" onClick="onkan(); loadData(); checkCookie(); offkan();" onMouseout="onkan(); loadData()" ><br><center>This is authentication page<br>Click here</center><br><br></div>
+<div id="auth" onClick="onkan(); loadData(); checkCookie(); offkan();" onMouseout="onkan(); loadData()" >
+<br><center>This is authentication page<br>Click here</center><br><br></div>
 
 
 <div data-role="content"  id="chat_place"></div>
@@ -686,7 +687,7 @@ function loadData(whotochat) {
 	var whotochat = $('#whotochat').val();
 
 
-        $('#chat_place2').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
+        $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
         window.reloadData = window.setTimeout(loadData, 1000);
@@ -713,6 +714,7 @@ nilai.value = 1;
 
 function onkan(){
 var nilai = document.getElementById("countervalue");
+alert("ini nilai asline:"+nilai)
 nilai.value = 0;
 }
 
