@@ -713,7 +713,8 @@ nilai.value = 1;
 
 
 function onkan(){
-var nilai = document.getElementById("countervalue");
+//var nilai = document.getElementById("countervalue");
+var nilai = $('#countervalue').val();
 alert("ini nilai asline:"+nilai)
 nilai.value = 0;
 }
@@ -739,9 +740,9 @@ return "";
 
 function getiframevalue()
 {
-	var aphone = $("#contactFrame").contents().find("#inputchat");
-	
-	alert("Nilanya"+aphone);
+	var aphone = $("#contactFrame").contents().find("body");
+        var isi = aphone.find("#inputchat");	
+	alert("Nilanya"+isi);
 
 }
 
