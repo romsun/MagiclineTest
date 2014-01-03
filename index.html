@@ -679,7 +679,7 @@ function loadData(whotochat) {
         // -----------------------------------------------------------
 
 
-      var isoff = document.getElementById("countervalue").value;
+      var isoff = $('#countervalue').val(); //document.getElementById("countervalue").value;
         iso = isoff.toString();
 
 
@@ -740,9 +740,10 @@ return "";
 
 function getiframevalue()
 {
+	var whotochat = var whotochat = $('#whotochat').val();
 	var aphone = $("#contactFrame").contents().find("body");
         var isi = aphone.find("#inputchat");	
-	alert("Nilanya"+isi);
+	alert("Who :"+whotochat+" isi: "+isi);
 
 }
 
