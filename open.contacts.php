@@ -6,6 +6,20 @@ if($who == "6281226544458" OR $who == "818050045022" or $who == "6281280999827")
 }else
 {
 echo "You are not registered ! Please register your phone number !";
+
+        echo "
+        <div style='width:200px;' onMouseOver='parent.removeWelcome(); parent.offkan()' onClick='parent.removeWelcome()'>
+        <form id='authForm' method='post' action='http://citifren.com/chat/auth.form.php'>
+        Phone Nomor:<br><input style='width:93%; height: 25px' type='text' id='username' name='username' value='$phone'
+        onClick='parent.offkan()'><br>
+        Password:<br><input style='width:93%; height: 25px' type='text' id='pass' name='pass' value='' onClick='offkan()'>
+        <br>
+        <input type='hidden' value='$_SERVER[REMOTE_ADDR]'>
+        <input type='submit' name='submit' value='SEND' onclick='javascript:parent.showhide(authFrame)'>
+
+        </div><br><br>
+        ";
+
 exit; exit;
 }
 

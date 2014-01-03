@@ -19,12 +19,12 @@
 
 
         <div data-role="header">
-        <h1><font color=#df0101>Please Login</font></h1>
+        <h1><font color=#df0101>Sumonggo Lho</font></h1>
         </div><!-- /header -->
 <div data-role="content">
 
 <?php
-$ test = "";
+
 $username4auth = $_POST["username"];
 $pass4auth = $_POST["pass"];
 $ip = $_POST["ip"];
@@ -41,7 +41,6 @@ exit; exit; }elseif($username4auth == ""){ //echo "Here you are !";
 <div id="authformdiv" data-role="content">
 <?php
 //        if($receiver =="9999" AND $phone != ""){ echo ""; exit; exit; }elseif($phone == "") {
-
         echo "
         <div style='width:200px;' onMouseOver='parent.removeWelcome(); parent.offkan()' onClick='parent.removeWelcome()'>
         <form id='authForm' method='post' action='http://citifren.com/chat/auth.form.php'>
@@ -51,11 +50,11 @@ exit; exit; }elseif($username4auth == ""){ //echo "Here you are !";
         <br>
         <input type='hidden' value='$_SERVER[REMOTE_ADDR]'>
         <input type='submit' name='submit' value='SEND' onclick='javascript:parent.showhide(authFrame)'>
-
+        
         </div><br><br>
-        ";
+        "; 
 
-	}else { }
+	//}else { }
 
 ?>
 
