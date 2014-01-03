@@ -542,10 +542,6 @@ function showcontact(id){
 <br>
 <br>
 
-<div id="auth" onClick="onkan(); loadData(); checkCookie(); offkan();" onMouseout="onkan(); loadData()" >
-<br><center>This is authentication page<br>Click here</center><br><br></div>
-
-
 <div data-role="content"  id="chat_place"></div>
 
 <script>
@@ -607,7 +603,7 @@ scrollTop: $("#pushframetop").offset().top
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px" id="chatboxe"></textarea>    
     </td><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
 
-    <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="getiframevalue(); onkan(); loadData();">
+    <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="onkan(); loadData();">
     </td></tr></table>
 
 </div>
@@ -683,7 +679,7 @@ function loadData(whotochat) {
         iso = isoff.toString();
 
 
-        if(iso != 1) {
+        if(iso != "1") {
 	var whotochat = $('#whotochat').val();
 
 
@@ -706,16 +702,15 @@ function loadData(whotochat) {
 
 
 function offkan(){
-var nilai = document.getElementById("countervalue");
-nilai.value = 1;
-
+var newval = 1;
+$("#countervalue").val(newval);
 }
 
 
 function onkan(){
 //var nilai = document.getElementById("countervalue");
 var nilai = $('#countervalue').val();
-var newval = "0";
+var newval = 0;
 $("#countervalue").val(newval);
 alert("ini nilai asline:"+nilai)
 //nilai.value = 0;
