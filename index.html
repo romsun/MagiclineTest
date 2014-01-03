@@ -482,6 +482,13 @@ function setWelcome()
   $('#auth').load('http://citifren.com/chat/welcome.php');
   }
 
+
+function halo()
+{
+alert("Halo Bos");
+}
+
+
 </script>
   
 
@@ -507,7 +514,7 @@ function setWelcome()
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame'); onkan(); loadData();" onMouseOver="OFFremoveWelcome()">Chat</a></li>
+            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="halo(); removeWelcome(); showcontact('contactFrame'); onkan(); loadData();" onMouseOver="OFFremoveWelcome()">Chat</a></li>
             <li><a data-icon="gear" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame')" onMouseOver="removeWelcome()">Call</a></li>
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#album">Albums</a></li>
 	</ul>
@@ -528,7 +535,7 @@ function showcontact(id){
 }
 </script>
  
-        <iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 90%; " src="">Form</iframe>
+        <iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 100%; " src="">Form</iframe>
 <div id="auth" onClick="onkan(); loadData(); checkCookie(); offkan();" onMouseout="onkan(); loadData()" ><br><center>This is authentication page<br>Click here</center><br><br></div>
 
 
