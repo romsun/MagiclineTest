@@ -19,7 +19,11 @@
 
 
         <div data-role="header">
+<<<<<<< HEAD
         <h1><font color=#df0101>Sumonggo Lho</font></h1>
+=======
+        <h1><font color=#df0101>Sumonggo Login</font></h1>
+>>>>>>> b13f58fabe7f063e1910a4e048b7e75ada88471f
         </div><!-- /header -->
 <div data-role="content">
 
@@ -41,6 +45,10 @@ exit; exit; }elseif($username4auth == ""){ //echo "Here you are !";
 <div id="authformdiv" data-role="content">
 <?php
 //        if($receiver =="9999" AND $phone != ""){ echo ""; exit; exit; }elseif($phone == "") {
+<<<<<<< HEAD
+=======
+
+>>>>>>> b13f58fabe7f063e1910a4e048b7e75ada88471f
         echo "
         <div style='width:200px;' onMouseOver='parent.removeWelcome(); parent.offkan()' onClick='parent.removeWelcome()'>
         <form id='authForm' method='post' action='http://citifren.com/chat/auth.form.php'>
@@ -50,9 +58,15 @@ exit; exit; }elseif($username4auth == ""){ //echo "Here you are !";
         <br>
         <input type='hidden' value='$_SERVER[REMOTE_ADDR]'>
         <input type='submit' name='submit' value='SEND' onclick='javascript:parent.showhide(authFrame)'>
+<<<<<<< HEAD
         
         </div><br><br>
         "; 
+=======
+
+        </div><br><br>
+        ";
+>>>>>>> b13f58fabe7f063e1910a4e048b7e75ada88471f
 
 	//}else { }
 

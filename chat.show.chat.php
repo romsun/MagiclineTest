@@ -196,7 +196,11 @@ if($username4auth){ echo "$username4auth"; $cookiename = "citifren"; $value = "$
         // ================ OFF LINE END   =================================================
 
 	?>
+<<<<<<< HEAD
 	<iframe src="auth.form.php"></iframe>
+=======
+	<iframe src="http://citifren.com/chat/auth.form.php"></iframe>
+>>>>>>> b13f58fabe7f063e1910a4e048b7e75ada88471f
 	<?php
 	exit; exit;
 	}else {  }
