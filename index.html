@@ -545,7 +545,7 @@ function showcontact(id){
 <div data-role="content"  id="chat_place"></div>
 
 <script>
-	$('form').submit(function(){
+$('form').submit(function(){
 	    var chatformID = $(this).parent().attr('chatform-id');
 	    var postData = $(this).serialize();
 	     
@@ -564,7 +564,7 @@ function showcontact(id){
 	    });
 	     
 	    return false;
-	});
+});
 	
 
 
@@ -702,7 +702,7 @@ function getiframevalue()
 <div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
 
 <div id="chatform-id">
-<form id="chatForm" method="post" action="#">
+<form id="chatFormOFF" method="post" action="#">
     <input type="hidden" id="countervalue" value="0">
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
 
