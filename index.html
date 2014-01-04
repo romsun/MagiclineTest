@@ -517,7 +517,7 @@ alert("Halo Bos"+whotochat+" "+vlu);
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="halo(); removeWelcome(); showcontact('contactFrame'); onkan(); loadData();" onMouseOver="OFFremoveWelcome()">Chat</a></li>
+            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="onkan(); removeWelcome(); showcontact('contactFrame'); onkan(); loadData();" onMouseOver="OFFremoveWelcome()">Chat</a></li>
             <li><a data-icon="gear" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame')" onMouseOver="removeWelcome()">Call</a></li>
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#album">Albums</a></li>
 	</ul>
@@ -624,10 +624,10 @@ function loadData(whotochat) {
 
 
       var isoff = $('#countervalue').val(); //document.getElementById("countervalue").value;
-        iso = isoff.toString();
+        //iso = isoff.toString();
 
 
-        if(iso != 1) {
+        if(isoff != 1) {
 	var whotochat = $('#whotochat').val();
 
 
