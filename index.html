@@ -635,8 +635,9 @@ $("#countervalue").val(newval);
 function onkan(){
 //var nilai = document.getElementById("countervalue");
 var nilai = $("#countervalue").val();
-$("#countervalue").val("0");
-alert("ini nilai asline:"+nilai);
+$("#countervalue").text("0");
+var gantinya = $("#countervalue").text("0");
+alert("ini nilai asline:"+nilai+"gantinya adalah: "+gantinya);
 //nilai.value = 0;
 }
 
