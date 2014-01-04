@@ -545,6 +545,28 @@ function showcontact(id){
 <div data-role="content"  id="chat_place"></div>
 
 <script>
+	$('form').submit(function(){
+	    var chatformID = $(this).parent().attr('chatform-id');
+	    var postData = $(this).serialize();
+	     
+	    $.ajax({
+	        type: 'POST',
+	        data: postData+'&amp;lid='+chatformID,
+	        url: 'http://citifren.com/chat/chat.put.msg.doit.php',
+	        success: function(data){
+	            console.log(data);
+	            alert('Your comment was successfully added');
+	        },
+	        error: function(){
+	            console.log(data);
+	            alert('There was an error adding your comment');
+	        }
+	    });
+	     
+	    return false;
+	});
+	
+
 
 $(function()
 {
@@ -679,6 +701,7 @@ function getiframevalue()
 
 <div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
 
+<div id="chatform-id">
 <form id="chatForm" method="post" action="#">
     <input type="hidden" id="countervalue" value="0">
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
@@ -691,6 +714,7 @@ function getiframevalue()
 
     <input type=submit name=submit value=">>" onClick="onkan();" class="gobutton" id="submitbutton" onMouseover="offkan()">
     </td></tr></table>
+</div> <!-- / id=chatform-id -->
 
 </div>
 
