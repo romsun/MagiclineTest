@@ -635,9 +635,10 @@ $("#countervalue").val(newval);
 function onkan(){
 //var nilai = document.getElementById("countervalue");
 var nilai = $("#countervalue").val();
-$("#countervalue").text("0");
-var gantinya = $("#countervalue").text("0");
-alert("ini nilai asline:"+nilai+"gantinya adalah: "+gantinya);
+alert("Nilai countervalue: "+nilai);
+//$("#countervalue").text("0");
+//var gantinya = $("#countervalue").text("0");
+//alert("ini nilai asline:"+nilai+"gantinya adalah: "+gantinya);
 //nilai.value = 0;
 }
 
@@ -687,7 +688,7 @@ function getiframevalue()
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px" id="chatboxe"></textarea>    
     </td><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
 
-    <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="onkan(); loadData();">
+    <input type=submit name=submit value=">>" onClick="onkan();" class="gobutton" id="submitbutton" onMouseover="offkan()">
     </td></tr></table>
 
 </div>
