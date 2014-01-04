@@ -548,6 +548,8 @@ function showcontact(id){
 
 $(function()
 {
+	var nilai = $("#countervalue").val();
+	alert("Nilai CV: "+nilai);
         $('#chatForm').submit(function () {
             $.post('http://citifren.com/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
                  $('#result').append(data);
@@ -556,7 +558,6 @@ $(function()
         document.getElementById('chatboxe').value = "";
         document.getElementById('chatboxe').style.height = "2em";
         return false;
-        add();
         });
 
 });
