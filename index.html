@@ -586,6 +586,90 @@ scrollTop: $("#pushframetop").offset().top
 
 </script>
 
+
+<script>
+function loadData(whotochat) {
+
+        // -----------------------------------------------------------
+        // Fungsi ini memerlukan <input type=hidden id=countervalue
+        // Untuk On dan Off, nilai countervalue harus diubah 1 atau 0
+        // 1 = OFF
+        // 0 = ON
+        // Diaktifkan menggunakan event handler tertentu dan memanggil
+        // fungsi offkan(); atau onkan(); sebelum fungsi loadData();
+        // -----------------------------------------------------------
+
+
+      var isoff = $('#countervalue').val(); //document.getElementById("countervalue").value;
+        iso = isoff.toString();
+
+
+        if(iso != "1") {
+	var whotochat = $('#whotochat').val();
+
+
+        $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
+        if (window.reloadData != 0)
+        window.clearTimeout(window.reloadData);
+        window.reloadData = window.setTimeout(loadData, 1000);
+        }).fadeIn("slow");
+
+        }else  { window.clearTimeout(window.reloadData);  }
+
+ 	// $(".boxshadow").css({"width:":"100%"});
+}
+
+        // window.reloadData = 0; // store timer load data on page load, which sets timeout to reload again
+
+	var whotochat = document.getElementById("whotochat").value;
+      //  window.reloadData = 0;
+      //  loadData(phone);
+
+
+function offkan(){
+var newval = "1";
+$("#countervalue").val(newval);
+}
+
+
+function onkan(){
+//var nilai = document.getElementById("countervalue");
+var nilai = $('#countervalue').val();
+var newval = "0";
+$("#countervalue").val(newval);
+alert("ini nilai asline:"+nilai);
+//nilai.value = 0;
+}
+
+function setwhotochat(whotochat)
+{
+	var aphone = document.getElementById("whotochat");
+        aphone.value = whotochat;
+}
+
+function getCookie(cname)
+{
+var name = cname + "=";
+var ca = document.cookie.split(';');
+for(var i=0; i<ca.length; i++) 
+  {
+  var c = ca[i].trim();
+  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+return "";
+}
+
+
+function getiframevalue()
+{
+	var whotochat = var whotochat = $('#whotochat').val();
+	var aphone = $("#contactFrame").contents().find("body");
+        var isi = aphone.find("#inputchat");	
+	alert("Who :"+whotochat+" isi: "+isi);
+
+}
+</script>
+
 <iframe id="uploadFrame" name="uploadFrame" style="display:none; border: 0px" src="">Form</iframe>
 
 </div>
@@ -662,91 +746,6 @@ function clearBoxPut(resultput)
 
 
 
-<script>
-function loadData(whotochat) {
-
-        // -----------------------------------------------------------
-        // Fungsi ini memerlukan <input type=hidden id=countervalue
-        // Untuk On dan Off, nilai countervalue harus diubah 1 atau 0
-        // 1 = OFF
-        // 0 = ON
-        // Diaktifkan menggunakan event handler tertentu dan memanggil
-        // fungsi offkan(); atau onkan(); sebelum fungsi loadData();
-        // -----------------------------------------------------------
-
-
-      var isoff = $('#countervalue').val(); //document.getElementById("countervalue").value;
-        iso = isoff.toString();
-
-
-        if(iso != "1") {
-	var whotochat = $('#whotochat').val();
-
-
-        $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
-        if (window.reloadData != 0)
-        window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 1000);
-        }).fadeIn("slow");
-
-        }else  { window.clearTimeout(window.reloadData);  }
-
- 	// $(".boxshadow").css({"width:":"100%"});
-}
-
-        // window.reloadData = 0; // store timer load data on page load, which sets timeout to reload again
-
-	var whotochat = document.getElementById("whotochat").value;
-      //  window.reloadData = 0;
-      //  loadData(phone);
-
-
-function offkan(){
-var newval = 1;
-$("#countervalue").val(newval);
-}
-
-
-function onkan(){
-//var nilai = document.getElementById("countervalue");
-var nilai = $('#countervalue').val();
-var newval = 0;
-$("#countervalue").val(newval);
-alert("ini nilai asline:"+nilai);
-//nilai.value = 0;
-}
-
-function setwhotochat(whotochat)
-{
-	var aphone = document.getElementById("whotochat");
-        aphone.value = whotochat;
-}
-
-function getCookie(cname)
-{
-var name = cname + "=";
-var ca = document.cookie.split(';');
-for(var i=0; i<ca.length; i++) 
-  {
-  var c = ca[i].trim();
-  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-  }
-return "";
-}
-
-
-function getiframevalue()
-{
-	var whotochat = var whotochat = $('#whotochat').val();
-	var aphone = $("#contactFrame").contents().find("body");
-        var isi = aphone.find("#inputchat");	
-	alert("Who :"+whotochat+" isi: "+isi);
-
-}
-
-
-
-</script>
 </div>
 
 
