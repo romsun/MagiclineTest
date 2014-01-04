@@ -310,10 +310,10 @@ td.calloutanswer {
 }
 
 iframe {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  margin-left: 25px;
-  margin-right: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
   -moz-border-radius: 12px;
   -webkit-border-radius: 12px; 
   border-radius: 12px; 
@@ -328,6 +328,27 @@ iframe {
   -ms-transform:rotate(0deg);
   filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=.1);
 }
+
+iframe anyar{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px; 
+  border-radius: 12px; 
+
+  -moz-box-shadow: 4px 4px 14px #000; 
+  -webkit-box-shadow: 4px 4px 14px #000; 
+  box-shadow: 4px 4px 14px #000; 
+
+  -moz-transform:rotate(0deg);
+  -webkit-transform:rotate(0deg);
+  -o-transform:rotate(0deg);
+  -ms-transform:rotate(0deg);
+  filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=.1);
+}
+
 
 .boxshadow {
   margin-top: 20px;
@@ -482,6 +503,16 @@ function setWelcome()
   $('#auth').load('http://citifren.com/chat/welcome.php');
   }
 
+
+function halo()
+{
+var whotochat = $('#whotochat').val();
+var vlu = $('#countervalue').val();
+var vlu2 = $('#countervalue').val(0);
+alert("Halo Bos : "+whotochat+" "+vlu);
+}
+
+
 </script>
   
 
@@ -507,7 +538,7 @@ function setWelcome()
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame'); onkan(); loadData();" onMouseOver="OFFremoveWelcome()">Chat</a></li>
+            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="halo(); onkan(); loadData(); removeWelcome(); showcontact('contactFrame');" onMouseOver="OFFremoveWelcome()">Chat</a></li>
             <li><a data-icon="gear" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame')" onMouseOver="removeWelcome()">Call</a></li>
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#album">Albums</a></li>
 	</ul>
@@ -528,16 +559,40 @@ function showcontact(id){
 }
 </script>
  
-        <iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 90%; " src="">Form</iframe>
-<div id="auth" onClick="onkan(); loadData(); checkCookie(); offkan();" onMouseout="onkan(); loadData()" ><br><center>This is authentication page<br>Click here</center><br><br></div>
-
+        <iframe id="contactFrame" name="contactFrame" style="display:none; left: 1px; height:100%; border: 0px; width: 100%; font-color: #111111" src="">Form</iframe>
+<br>
+<br>
 
 <div data-role="content"  id="chat_place"></div>
 
 <script>
+$('form').submit(function(){
+	    var chatformID = $(this).parent().attr('chatform-id');
+	    var postData = $(this).serialize();
+	     
+	    $.ajax({
+	        type: 'POST',
+	        data: postData+'&amp;lid='+chatformID,
+	        url: 'http://citifren.com/chat/chat.put.msg.doit.php',
+	        success: function(data){
+	            console.log(data);
+	            alert('Your comment was successfully added');
+	        },
+	        error: function(){
+	            console.log(data);
+	            alert('There was an error adding your comment');
+	        }
+	    });
+	     
+	    return false;
+});
+	
+
 
 $(function()
 {
+	var nilai = $("#countervalue").val();
+	alert("Nilai CV: "+nilai);
         $('#chatForm').submit(function () {
             $.post('http://citifren.com/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
                  $('#result').append(data);
@@ -546,7 +601,6 @@ $(function()
         document.getElementById('chatboxe').value = "";
         document.getElementById('chatboxe').style.height = "2em";
         return false;
-        add();
         });
 
 });
@@ -576,6 +630,87 @@ scrollTop: $("#pushframetop").offset().top
 
 </script>
 
+
+<script>
+function loadData(whotochat) {
+
+        // -----------------------------------------------------------
+        // Fungsi ini memerlukan <input type=hidden id=countervalue
+        // Untuk On dan Off, nilai countervalue harus diubah 1 atau 0
+        // 1 = OFF
+        // 0 = ON
+        // Diaktifkan menggunakan event handler tertentu dan memanggil
+        // fungsi offkan(); atau onkan(); sebelum fungsi loadData();
+        // -----------------------------------------------------------
+
+
+      var isoff = $('#countervalue').val(); //document.getElementById("countervalue").value;
+        //iso = isoff.toString();
+
+
+        if(isoff != 1) {
+	var whotochat = $('#whotochat').val();
+
+
+        $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
+        if (window.reloadData != 0)
+        window.clearTimeout(window.reloadData);
+        window.reloadData = window.setTimeout(loadData, 1000);
+        }).fadeIn("slow");
+
+        }else  { window.clearTimeout(window.reloadData);  }
+
+ 	// $(".boxshadow").css({"width:":"100%"});
+}
+
+        // window.reloadData = 0; // store timer load data on page load, which sets timeout to reload again
+
+	var whotochat = document.getElementById("whotochat").value;
+      //  window.reloadData = 0;
+      //  loadData(phone);
+
+
+function offkan(){
+var newval = "1";
+$("#countervalue").val(newval);
+}
+
+
+function onkan(){
+var kuki = $.cookie("whotochat",  { path: '/' });
+$("whotochat").val(kuki);
+$("countervalue").val(0);
+}
+
+function setwhotochat(whotochat)
+{
+	var aphone = document.getElementById("whotochat");
+        aphone.value = whotochat;
+}
+
+function getCookie(cname)
+{
+var name = cname + "=";
+var ca = document.cookie.split(';');
+for(var i=0; i<ca.length; i++) 
+  {
+  var c = ca[i].trim();
+  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+return "";
+}
+
+
+function getiframevalue()
+{
+	var whotochat = var whotochat = $('#whotochat').val();
+	var aphone = $("#contactFrame").contents().find("body");
+        var isi = aphone.find("#inputchat");	
+	alert("Who :"+whotochat+" isi: "+isi);
+
+}
+</script>
+
 <iframe id="uploadFrame" name="uploadFrame" style="display:none; border: 0px" src="">Form</iframe>
 
 </div>
@@ -583,7 +718,8 @@ scrollTop: $("#pushframetop").offset().top
 
 <div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
 
-<form id="chatForm" action="">
+<div id="chatform-idOFF"> </div> <!-- / id=chatform-id -->
+<form id="chatForm" method="post" action="#">
     <input type="hidden" id="countervalue" value="0">
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
 
@@ -593,8 +729,9 @@ scrollTop: $("#pushframetop").offset().top
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px" id="chatboxe"></textarea>    
     </td><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
 
-    <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="onkan(); loadData();">
+    <input type=submit name=submit value=">>" onClick="onkan(); loadData();" class="gobutton" id="submitbutton" onMouseover="offkan()">
     </td></tr></table>
+
 
 </div>
 
@@ -652,77 +789,6 @@ function clearBoxPut(resultput)
 
 
 
-<script>
-function loadData(whotochat) {
-
-        // -----------------------------------------------------------
-        // Fungsi ini memerlukan <input type=hidden id=countervalue
-        // Untuk On dan Off, nilai countervalue harus diubah 1 atau 0
-        // 1 = OFF
-        // 0 = ON
-        // Diaktifkan menggunakan event handler tertentu dan memanggil
-        // fungsi offkan(); atau onkan(); sebelum fungsi loadData();
-        // -----------------------------------------------------------
-
-
-      var isoff = document.getElementById("countervalue").value;
-        iso = isoff.toString();
-
-
-        if(iso != 1) {
-	var whotochat = $('#whotochat').val();
-
-
-        $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
-        if (window.reloadData != 0)
-        window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 500);
-        }).fadeIn("slow");
-
-        }else  { window.clearTimeout(window.reloadData);  }
-
- 	// $(".boxshadow").css({"width:":"100%"});
-}
-
-        // window.reloadData = 0; // store timer load data on page load, which sets timeout to reload again
-
-	var whotochat = document.getElementById("whotochat").value;
-      //  window.reloadData = 0;
-      //  loadData(phone);
-
-
-function offkan(){
-var nilai = document.getElementById("countervalue");
-nilai.value = 1;
-
-}
-
-
-function onkan(){
-var nilai = document.getElementById("countervalue");
-nilai.value = 0;
-}
-
-function setwhotochat(whotochat)
-{
-	var aphone = document.getElementById("whotochat");
-        aphone.value = whotochat;
-}
-
-function getCookie(cname)
-{
-var name = cname + "=";
-var ca = document.cookie.split(';');
-for(var i=0; i<ca.length; i++) 
-  {
-  var c = ca[i].trim();
-  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-  }
-return "";
-}
-
-
-</script>
 </div>
 
 

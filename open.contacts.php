@@ -1,12 +1,12 @@
 <?php 
 
 $who = $_COOKIE["citifren"];
-if($who == "6281226544458" OR $who == "818050045022" or $who == "6281280999827")
+if($who == "6281226544458" OR $who == "818050045022" or $who == "6281280999827" OR $who !="")
 {
 }else
 {
 echo "You are not registered ! Please register your phone number !";
-<<<<<<< HEAD
+
 
         echo "
         <div style='width:200px;' onMouseOver='parent.removeWelcome(); parent.offkan()' onClick='parent.removeWelcome()'>
@@ -21,8 +21,6 @@ echo "You are not registered ! Please register your phone number !";
         </div><br><br>
         ";
 
-=======
->>>>>>> b13f58fabe7f063e1910a4e048b7e75ada88471f
 exit; exit;
 }
 
