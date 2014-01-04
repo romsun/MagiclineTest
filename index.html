@@ -509,7 +509,7 @@ function halo()
 var whotochat = $('#whotochat').val();
 var vlu = $('#countervalue').val();
 var vlu2 = $('#countervalue').val(0);
-alert("Halo Bos"+whotochat+" "+vlu);
+alert("Halo Bos : "+whotochat+" "+vlu);
 }
 
 
@@ -677,6 +677,9 @@ $("#countervalue").val(newval);
 
 
 function onkan(){
+var kuki = $.cookie("whotochat",  { path: '/' });
+$("whotochat").val(kuki);
+$("countervalue").val(0);
 }
 
 function setwhotochat(whotochat)
