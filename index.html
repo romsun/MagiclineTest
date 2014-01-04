@@ -508,7 +508,7 @@ function halo()
 {
 var whotochat = $('#whotochat').val();
 var vlu = $('#countervalue').val();
-
+var vlu2 = $('#countervalue').val(0);
 alert("Halo Bos"+whotochat+" "+vlu);
 }
 
@@ -538,7 +538,7 @@ alert("Halo Bos"+whotochat+" "+vlu);
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="onkan(); loadData(); removeWelcome(); showcontact('contactFrame');" onMouseOver="OFFremoveWelcome()">Chat</a></li>
+            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="halo(); onkan(); loadData(); removeWelcome(); showcontact('contactFrame');" onMouseOver="OFFremoveWelcome()">Chat</a></li>
             <li><a data-icon="gear" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame')" onMouseOver="removeWelcome()">Call</a></li>
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#album">Albums</a></li>
 	</ul>
@@ -677,10 +677,6 @@ $("#countervalue").val(newval);
 
 
 function onkan(){
-//var nilai = document.getElementById("countervalue");
-var nilai = $("#countervalue").val();
-var baru = $("#countervalue").val("0");
-alert("Nilai countervalue: "+nilai);
 }
 
 function setwhotochat(whotochat)
