@@ -12,7 +12,7 @@
 
   <script type="text/javascript" src="jq203.min.js"> </script>
   <script type="text/javascript" src="index.js"> </script>
-
+  <script type="text/javascript" src="phonegap.js"> </script>
   <!-- jQuery and jQuery Mobile -->
 
 
@@ -482,6 +482,11 @@ function setWelcome()
   $('#auth').load('http://citifren.com/chat/welcome.php');
   }
 
+function whotochat() 
+  {
+  var isi = $('#whotochatnew').val();
+  alert(isi);
+  }
 </script>
   
 
@@ -501,7 +506,8 @@ function setWelcome()
 	<div data-role="header">
 	<h1><font color="#dedede"><font color=#df0101>Citi</font><font color=#a4a4a4>Fren</font></font></h1>
     	<a href="#satu" onclick="setWelcome()" data-icon="home">Home</a>
-    	<a href="#dua" data-iconpos="right" data-icon="grid">></a>
+    	<a href="#dua" onclick="whotochat()" data-iconpos="right" data-icon="grid">></a>
+	<input type="hidden" id="whotochatnew" value="7777" name="whotochat">
 
 	</div><!-- /header -->
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
