@@ -537,70 +537,10 @@ function showcontact(id){
 
 <div data-role="content"  id="chat_place"></div>
 
-<script>
-
-$(function()
-{
-        $('#chatForm').submit(function () {
-            $.post('http://citifren.com/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
-                 $('#result').append(data);
-        });
-
-        document.getElementById('chatboxe').value = "";
-        document.getElementById('chatboxe').style.height = "2em";
-        return false;
-       
-        });
-
-});
-</script>
-<script>
-
-function showhide(id){
-        if (document.getElementById){
-            obj = document.getElementById(id);
-            if (obj.style.display == "none"){
-                obj.style.display = "";
-            } else {
-                obj.style.display = "none";
-            }
-        }
-}
+<!-- cut start  -->
 
 
-
-
-function jumpTo(id){
-$('html, body').animate({
-scrollTop: $("#pushframetop").offset().top
-}, 1500);
-}
-
-
-</script>
-
-<iframe id="uploadFrame" name="uploadFrame" style="display:none; border: 0px" src="">Form</iframe>
-
-</div>
-<a href="#pushframetop" id="pushframetop"></a>
-
-<div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
-
-<form id="chatForm" action="">
-    <input type="hidden" id="countervalue" value="0">
-    <input type="hidden" id="whotochat" value="9999" name="whotochat">
-
-    <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-    <a href="http://citifren.com/chat/upload.form.file.php" target="uploadFrame" onClick="javascript:showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
-    </td><td style="width:100%;">
-    <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px" id="chatboxe"></textarea>    
-    </td><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-
-    <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="onkan(); loadData();">
-    </td></tr></table>
-
-</div>
-
+<!-- cut end -->
 
 <script type="text/javascript">
 $(function()
