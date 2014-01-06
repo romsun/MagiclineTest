@@ -14,19 +14,11 @@
     </description>
 
     <author href="http://citifren.com" email="support@citifren.com">
-        Hardeep Shoker 
+        Romsun Pramudito 
     </author>
 
-	<gap:platform name="ios" />
-	<gap:platform name="android" />
-	<gap:platform name="webos" />
-	<gap:platform name="symbian" />
-	<gap:platform name="blackberry" />
-	<gap:platform name="winphone" />
 
 
-<access origin="*"/> <!-- allow local pages -->
-<access origin="http://citifren.com"/> <!-- allow local pages -->
 <access origin="http://citifren.com" subdomain=true/> <!-- allow local pages -->
 
 </widget>
