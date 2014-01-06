@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.phonegap.citifren"
+        versionCode = "10" 
+        version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>CitiFren</name>
+
+    <description>
+    Masih tidak percaya Tuhan ? Ayo ! Mencari kebahagian hakiki lewat Alquran dan Hadist. 
+    </description>
+
+    <author href="http://citifren.com" email="support@citifren.com">
+        Hardeep Shoker 
+    </author>
+
+	<gap:platform name="ios" />
+	<gap:platform name="android" />
+	<gap:platform name="webos" />
+	<gap:platform name="symbian" />
+	<gap:platform name="blackberry" />
+	<gap:platform name="winphone" />
+
+
+<access origin="*"/> <!-- allow local pages -->
+<access origin="http://citifren.com"/> <!-- allow local pages -->
+<access origin="http://citifren.com" subdomain=true/> <!-- allow local pages -->
+
+</widget>
