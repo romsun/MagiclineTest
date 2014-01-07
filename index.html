@@ -308,13 +308,13 @@ iframe {
   margin-left: 0px;
   margin-right: 0px;
   font-color:#111111;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px; 
-  border-radius: 12px; 
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px; 
+  border-radius: 2px; 
 
-  -moz-box-shadow: 4px 4px 14px #000; 
-  -webkit-box-shadow: 4px 4px 14px #000; 
-  box-shadow: 4px 4px 14px #000; 
+  -moz-box-shadow: 1px 1px 1px #000; 
+  -webkit-box-shadow: 1px 1px 1px #000; 
+  box-shadow: 1px 1px 1px #000; 
 
   -moz-transform:rotate(0deg);
   -webkit-transform:rotate(0deg);
@@ -534,14 +534,9 @@ function showcontact(id){
  
 
 <iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 100%; " src="">Form</iframe>
-
 <div data-role="content"  id="chat_place"></div>
-
 <!-- cut start  -->
-
-
 <!-- cut end -->
-
 <script type="text/javascript">
 $(function()
 {
@@ -580,88 +575,10 @@ function pull_chat_data_from_server() {
 
         }
 </script>
-
 <script>
-
 function clearBoxPut(resultput)
 {
     document.getElementById(resultput).innerHTML = "";
-}
-
-
-</script>
-
-
-
-
-
-<script>
-function loadData(whotochat) {
-
-        // -----------------------------------------------------------
-        // Fungsi ini memerlukan <input type=hidden id=countervalue
-        // Untuk On dan Off, nilai countervalue harus diubah 1 atau 0
-        // 1 = OFF
-        // 0 = ON
-        // Diaktifkan menggunakan event handler tertentu dan memanggil
-        // fungsi offkan(); atau onkan(); sebelum fungsi loadData();
-        // -----------------------------------------------------------
-
-
-      var isoff = document.getElementById("countervalue").value;
-        iso = isoff.toString();
-
-
-        if(iso != 1) {
-	var whotochat = $('#whotochat').val();
-
-
-        $('#contactDiv').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
-        if (window.reloadData != 0)
-        window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 500);
-        }).fadeIn("slow");
-
-        }else  { window.clearTimeout(window.reloadData);  }
-
- 	// $(".boxshadow").css({"width:":"100%"});
-}
-
-        // window.reloadData = 0; // store timer load data on page load, which sets timeout to reload again
-
-	var whotochat = document.getElementById("whotochat").value;
-      //  window.reloadData = 0;
-      //  loadData(phone);
-
-
-function offkan(){
-var nilai = document.getElementById("countervalue");
-nilai.value = 1;
-
-}
-
-
-function onkan(){
-var nilai = document.getElementById("countervalue");
-nilai.value = 0;
-}
-
-function setwhotochat(whotochat)
-{
-	var aphone = document.getElementById("whotochat");
-        aphone.value = whotochat;
-}
-
-function getCookie(cname)
-{
-var name = cname + "=";
-var ca = document.cookie.split(';');
-for(var i=0; i<ca.length; i++) 
-  {
-  var c = ca[i].trim();
-  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-  }
-return "";
 }
 
 
