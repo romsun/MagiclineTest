@@ -10,6 +10,13 @@
  
   <link rel="stylesheet" href="jquery.mobile-1.3.2.min.css">
 
+  <script type="text/javascript" src="jq203.min.js"> </script>
+  <script type="text/javascript" src="index.js"> </script>
+
+  <!--  <script src="jquery-1.9.1.min.js"></script> -->
+  <script src="jquery.mobile-1.3.2.min.js"></script>
+
+
 <style>
 div#fullyaa.ui-collapsible div.ui-collapsible-content {
     margin: 1px 0 0 0 ;
@@ -303,18 +310,17 @@ td.calloutanswer {
 }
 
 iframe {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  font-color:#111111;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px; 
-  border-radius: 2px; 
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 25px;
+  margin-right: 30px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px; 
+  border-radius: 12px; 
 
-  -moz-box-shadow: 1px 1px 1px #000; 
-  -webkit-box-shadow: 1px 1px 1px #000; 
-  box-shadow: 1px 1px 1px #000; 
+  -moz-box-shadow: 4px 4px 14px #000; 
+  -webkit-box-shadow: 4px 4px 14px #000; 
+  box-shadow: 4px 4px 14px #000; 
 
   -moz-transform:rotate(0deg);
   -webkit-transform:rotate(0deg);
@@ -322,6 +328,18 @@ iframe {
   -ms-transform:rotate(0deg);
   filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=.1);
 }
+
+.loginiframe {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+
+}
+
 
 .boxshadow {
   margin-top: 20px;
@@ -386,10 +404,13 @@ iframe {
   filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=.1);
 }
 
+.trigger {
+    display: block;
+    width: 100%;
+    margin: 0px auto;
+}
 
 </style>
-
-
 
 <script type="text/javascript">
 $(function() 
@@ -474,11 +495,6 @@ function setWelcome()
   $('#auth').load('http://citifren.com/chat/welcome.php');
   }
 
-function whotochat() 
-  {
-  var isi = $('#whotochatnew').val();
-  alert(isi);
-  }
 </script>
   
 
@@ -498,15 +514,14 @@ function whotochat()
 	<div data-role="header">
 	<h1><font color="#dedede"><font color=#df0101>Citi</font><font color=#a4a4a4>Fren</font></font></h1>
     	<a href="#satu" onclick="setWelcome()" data-icon="home">Home</a>
-    	<a href="#dua" onclick="whotochat()" data-iconpos="right" data-icon="grid">></a>
-	<input type="hidden" id="whotochatnew" value="7777" name="whotochatnew">
+    	<a href="#dua" data-iconpos="right" data-icon="grid">></a>
 
 	</div><!-- /header -->
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" href=http://citifren.com target="webapp">Chat</a></li>
-            <li><a data-icon="gear" data-role="button" href=http://citifren.com target="webapp">Call</a></li>
+            <li><a data-icon="star" onclick="javascript:showhide('contactDiv');" href="http://citifren.com/chat/open.contacts.php" class="trigger">Chat</a></li>
+            <li><a data-icon="gear" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame')" onMouseOver="removeWelcome()">Call</a></li>
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#album">Albums</a></li>
 	</ul>
 
@@ -526,17 +541,92 @@ function showcontact(id){
 }
 </script>
  
+        <iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 90%; " src="">Form</iframe>
+<div id = "auth"></div>
 
-<iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 100%; " src="">Form</iframe>
+<div id="contactDiv" style="display:none">This is contents of contact list</div>
+
 <div data-role="content"  id="chat_place"></div>
-<!-- cut start  -->
-<br>
-<a style="text-decoration: none" href=http://citifren.com target="webapp">Click here<a>
-<br>
-<br>
-<br>
 
-<!-- cut end -->
+<script>
+
+$(function()
+{
+        $('#chatForm').submit(function () {
+            $.post('http://citifren.com/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
+                 $('#result').append(data);
+        });
+
+        document.getElementById('chatboxe').value = "";
+        document.getElementById('chatboxe').style.height = "2em";
+        return false;
+        add();
+        });
+
+});
+</script>
+<script>
+
+function showhide(id){
+        if (document.getElementById){
+            obj = document.getElementById(id);
+            if (obj.style.display == "none"){
+                obj.style.display = "";
+            } else {
+                obj.style.display = "none";
+            }
+        }
+}
+
+function removecontactdiv(id){
+var isi = $("#countervalue").val();
+alert("Haloo"+isi+"");
+}
+
+$(document).ready(function(){
+  $('.trigger').click(function(e){
+      e.preventDefault();
+      var link = $(this).attr("href");
+      
+      $('#contactDiv').load(link);
+      
+  });
+});
+
+
+
+function jumpTo(id){
+$('html, body').animate({
+scrollTop: $("#pushframetop").offset().top
+}, 1500);
+}
+
+
+</script>
+
+<iframe id="uploadFrame" name="uploadFrame" style="display:none; border: 0px" src="">Form</iframe>
+
+</div>
+<a href="#pushframetop" id="pushframetop"></a>
+
+<div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
+
+<form id="chatForm" action="">
+    <input type="hidden" id="countervalue" value="0">
+    <input type="hidden" id="whotochat" value="9999" name="whotochat">
+
+    <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
+    <a href="http://citifren.com/chat/upload.form.file.php" target="uploadFrame" onClick="javascript:showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
+    </td><td style="width:100%;">
+    <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px" id="chatboxe"></textarea>    
+    </td><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
+
+    <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="onkan(); loadData();">
+    </td></tr></table>
+
+</div>
+
+
 <script type="text/javascript">
 $(function()
 {
@@ -575,10 +665,88 @@ function pull_chat_data_from_server() {
 
         }
 </script>
+
 <script>
+
 function clearBoxPut(resultput)
 {
     document.getElementById(resultput).innerHTML = "";
+}
+
+
+</script>
+
+
+
+
+
+<script>
+function loadData(whotochat) {
+
+        // -----------------------------------------------------------
+        // Fungsi ini memerlukan <input type=hidden id=countervalue
+        // Untuk On dan Off, nilai countervalue harus diubah 1 atau 0
+        // 1 = OFF
+        // 0 = ON
+        // Diaktifkan menggunakan event handler tertentu dan memanggil
+        // fungsi offkan(); atau onkan(); sebelum fungsi loadData();
+        // -----------------------------------------------------------
+
+
+      var isoff = document.getElementById("countervalue").value;
+        iso = isoff.toString();
+
+
+        if(iso != 1) {
+	var whotochat = $('#whotochat').val();
+
+
+        $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
+        if (window.reloadData != 0)
+        window.clearTimeout(window.reloadData);
+        window.reloadData = window.setTimeout(loadData, 500);
+        }).fadeIn("slow");
+
+        }else  { window.clearTimeout(window.reloadData);  }
+
+ 	// $(".boxshadow").css({"width:":"100%"});
+}
+
+        // window.reloadData = 0; // store timer load data on page load, which sets timeout to reload again
+
+	var whotochat = document.getElementById("whotochat").value;
+      //  window.reloadData = 0;
+      //  loadData(phone);
+
+
+function offkan(){
+var nilai = document.getElementById("countervalue");
+nilai.value = 1;
+
+}
+
+
+function onkan(){
+var nilai = document.getElementById("countervalue");
+nilai.value = 0;
+}
+
+function setwhotochat(whotochat)
+{
+	var aphone = document.getElementById("whotochat");
+        aphone.value = whotochat;
+}
+
+function getCookie(cname)
+{
+var name = cname + "=";
+var ca = document.cookie.split(';');
+for(var i=0; i<ca.length; i++) 
+  {
+  var c = ca[i].trim();
+  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+return "";
 }
 
 
@@ -609,12 +777,6 @@ Your Profile goes here..!
 </div>
 </div>
 
-  <script type="text/javascript" src="jquery-2.0.3.min.js"> </script>
-  <script type="text/javascript" src="index.js"> </script>
-  <script type="text/javascript" src="phonegap.js"> </script>
-
-  <!--  <script src="jquery-1.9.1.min.js"></script> -->
-  <script src="jquery.mobile-1.3.2.min.js"></script>
 
 </body>
 </html>
