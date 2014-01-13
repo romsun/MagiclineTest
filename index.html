@@ -569,6 +569,7 @@ $(function()
 <script>
 
 function showhide(id){
+
         if (document.getElementById){
             obj = document.getElementById(id);
             if (obj.style.display == "none"){
@@ -579,10 +580,6 @@ function showhide(id){
         }
 }
 
-function showval(id){
-var isi = $("#whotochat").val();
-alert("Haloo"+isi+"");
-}
 
 $(document).ready(function(){
   $('.trigger').click(function(e){
@@ -602,6 +599,28 @@ scrollTop: $("#pushframetop").offset().top
 }, 1500);
 }
 
+//function showval(id){
+//var f = $("#uploadFrame");
+//f.contents().find(':text[name=sendwhotochat]').val('888888888888');
+//var g = window.frames['uploadFrame'].document.getElementById('sendwhotochat');
+//g.value = "999999999";
+//alert(g);
+//}
+
+
+
+
+//$(document).ready(function(){
+
+function setthis(id){
+var isi = "555555555555"; //$('#whotochat').val(); 
+var g = window.frames["uploadFrame"].document.getElementById("sendwhotochat");
+g.value = isi;
+}
+
+//});
+
+
 
 </script>
 
@@ -617,7 +636,7 @@ scrollTop: $("#pushframetop").offset().top
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
 
     <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-    <a href="http://citifren.com/chat/upload.form.file.php" target="uploadFrame" onClick="javascript:showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
+    <a href="http://citifren.com/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:setthis(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
     </td><td style="width:100%;">
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px" id="chatboxe"></textarea>    
     </td><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
@@ -734,10 +753,19 @@ nilai.value = 0;
 
 function setwhotochat(whotochat)
 {
-setCookie("whotochat",whotochat,365);
+setCookieHere("whotochat",whotochat,365);
 	var aphone = document.getElementById("whotochat");
         aphone.value = whotochat;
 }
+
+function setCookieHere(cname,cvalue,exdays)
+{
+var d = new Date();
+d.setTime(d.getTime()+(exdays*24*60*60*1000));
+var expires = "expires="+d.toGMTString();
+document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
 
 function getCookie(cname)
 {
