@@ -17,6 +17,8 @@
   <script src="jquery.mobile-1.3.2.min.js"></script>
 
 
+  <script src="phonegap.js"></script>
+
 <style>
 div#fullyaa.ui-collapsible div.ui-collapsible-content {
     margin: 1px 0 0 0 ;
@@ -550,6 +552,12 @@ function showcontact(id){
 <div data-role="content"  id="chat_place"></div>
 
 <script>
+//$( "#chat_place" ).scroll(function() {
+//$( "#auth" ).append( "<div>Handler for .scroll() called.</div>" );
+//offkan();
+//});
+</script>
+<script>
 
 $(function()
 {
@@ -599,30 +607,10 @@ scrollTop: $("#pushframetop").offset().top
 }, 1500);
 }
 
-//function showval(id){
-//var f = $("#uploadFrame");
-//f.contents().find(':text[name=sendwhotochat]').val('888888888888');
-//var g = window.frames['uploadFrame'].document.getElementById('sendwhotochat');
-//g.value = "999999999";
-//alert(g);
-//}
-
-
-
-
 //$(document).ready(function(){
 
-function setthis(id){
-var isi = "555555555555"; //$('#whotochat').val(); 
-var g = window.frames["uploadFrame"].document.getElementById("sendwhotochat");
-g.value = isi;
-}
-
-//});
-
-
-
 </script>
+
 
 <iframe id="uploadFrame" name="uploadFrame" style="display:none; border: 0px" src="">Form</iframe>
 
@@ -636,7 +624,7 @@ g.value = isi;
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
 
     <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-    <a href="http://citifren.com/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:setthis(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
+    <a href="http://citifren.com/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
     </td><td style="width:100%;">
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px" id="chatboxe"></textarea>    
     </td><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
@@ -675,7 +663,7 @@ function pull_chat_data_from_server() {
         $('#elementinsideiframe').load('test.show.chat.php', function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 500)
+        window.reloadData = window.setTimeout(loadData, 1000)
         }).fadeIn("slow");
         }
 
@@ -724,7 +712,7 @@ function loadData(whotochat) {
         $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 500);
+        window.reloadData = window.setTimeout(loadData, 1000);
         }).fadeIn("slow");
 
         }else  { window.clearTimeout(window.reloadData);  }
@@ -781,6 +769,49 @@ return "";
 
 
 </script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// Wait for Cordova to load
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// wait for phonegap to be ready
+function onDeviceReady() {
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 10000, enableHighAccuracy: false } );
+}
+
+// onSuccess Geolocation
+function onSuccess(position) {
+    alert( 
+        'Latitude: '           + position.coords.latitude              + "\n" +
+        'Longitude: '          + position.coords.longitude             + "\n" +
+        'Altitude: '           + position.coords.altitude              + "\n" +
+        'Accuracy: '           + position.coords.accuracy              + "\n" +
+        'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + "\n" +
+        'Heading: '            + position.coords.heading               + "\n" +
+        'Speed: '              + position.coords.speed                 + "\n" +
+        'Timestamp: '          + position.timestamp                    + "\n"
+        );
+}
+
+// onError Callback receives a PositionError object
+function onError(error) {
+    alert(
+        'code: '    + error.code    + '\n' +
+        'message: ' + error.message + '\n'
+    );
+}
+</script>
+
+
+
+
+
 </div>
 
 
