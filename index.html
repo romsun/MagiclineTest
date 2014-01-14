@@ -782,7 +782,19 @@ return "";
 
 
 
+<style>
+.mapframe {
+  position: fixed;
+  margin-top: 50px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 7px;
 
+}
+</style>
 <div data-role="page" id="dua" data-theme="a">
 
 
@@ -792,77 +804,24 @@ return "";
         <a href="#satu" data-iconpos="right" data-icon="grid">></a>
 
         </div><!-- /header -->
-<center>
-Your Profile goes here..!
-</center>
-<p onclick="openMep();">Go Map Click here bro </p>
 
+<div data-role="content">
+<script>
 
+function showhide(id){
 
-<script
-src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+        if (document.getElementById){
+            obj = document.getElementById(id);
+            if (obj.style.display == "none"){
+                obj.style.display = "";
+            } else {
+                obj.style.display = "none";
+            }
+        }
+}
 </script>
-
-<script type="text/javascript">
-// Wait for Cordova to load
-
-var longe;
-var late;
-function goMep()
-{
-//alert ("Hi");
-document.addEventListener("deviceready", onDeviceReady, false);
-}
-
-// wait for phonegap to be ready
-function onDeviceReady() {
-    navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 10000, enableHighAccuracy: false } );
-}
-
-// onSuccess Geolocation
-function onSuccess(position) {
-//    alert(
-//        'Latitude: '           + position.coords.latitude              + "\n" +
-//        'Longitude: '          + position.coords.longitude             + "\n" +
-//        'Altitude: '           + position.coords.altitude              + "\n" +
-//        'Accuracy: '           + position.coords.accuracy              + "\n" +
-//        'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + "\n" +
-//        'Heading: '            + position.coords.heading               + "\n" +
-//        'Speed: '              + position.coords.speed                 + "\n" +
-//        'Timestamp: '          + position.timestamp                    + "\n"
-//        );
-
-// 35.5941594,139.6852746 - Ishikawai TL
-
-late = position.coords.latitude;
-longe = position.coords.longitude;
-
-}
-
-// onError Callback receives a PositionError object
-function onError(error) {
-    alert(
-        'code: '    + error.code    + '\n' +
-        'message: ' + error.message + '\n'
-    );
-}
-
-function initialize()
-{
-var mapProp = {
-  center:new google.maps.LatLng(late,longe),
-  zoom:5,
-  mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
-
-goMep();
-google.maps.event.addDomListener(window, 'load', initialize);
-
-</script>
-
-<div id="googleMap" style="width:100%;height:100%;"></div>
+<a href="http://citifren.com/chat/test.map.php"  target="mapFrame" onclick="showhide('mapFrame')" style="text-decoration:none;">Go Map Click here bro </a>
+<br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:100%; height:100%" ></iframe>
 
 
 
@@ -870,12 +829,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
 
 <center>www.citifren.com</center>
-</div>
 
+</div>
 
 
 </div>
 </body>
 </html>
-
-
