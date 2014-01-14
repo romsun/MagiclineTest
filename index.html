@@ -795,7 +795,7 @@ return "";
 <center>
 Your Profile goes here..!
 </center>
-<p onclick="goMep(); openMep();">Go Map Click here bro </p>
+<p onclick="openMep();">Go Map Click here bro </p>
 
 
 
@@ -857,16 +857,8 @@ var mapProp = {
 var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 }
 
-
-function openMep()
-{
+goMep();
 google.maps.event.addDomListener(window, 'load', initialize);
-}
-
-
-
-
-
 
 </script>
 
@@ -885,3 +877,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </div>
 </body>
 </html>
+
+
