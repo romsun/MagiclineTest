@@ -785,7 +785,7 @@ return "";
 <style>
 .mapframe {
   position: fixed;
-  margin-top: 50px;
+  margin-top: 5px;
   margin-bottom: 0px;
   margin-left: 0px;
   margin-right: 0px;
@@ -820,6 +820,52 @@ function showhide(id){
         }
 }
 </script>
+
+<script>
+var longe;
+var late;
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// wait for phonegap to be ready
+function onDeviceReady() {
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 10000, enableHighAccuracy: false } );
+}
+
+// onSuccess Geolocation
+function onSuccess(position) {
+//    alert(
+//        'Latitude: '           + position.coords.latitude              + "\n" +
+//        'Longitude: '          + position.coords.longitude             + "\n" +
+//        'Altitude: '           + position.coords.altitude              + "\n" +
+//        'Accuracy: '           + position.coords.accuracy              + "\n" +
+//        'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + "\n" +
+//        'Heading: '            + position.coords.heading               + "\n" +
+//        'Speed: '              + position.coords.speed                 + "\n" +
+//        'Timestamp: '          + position.timestamp                    + "\n"
+//        );
+
+// 35.5941594,139.6852746 - Ishikawai TL
+
+late = position.coords.latitude;
+longe = position.coords.longitude;
+document.getElementById("late").value = late;
+document.getElementById("longe").value = longe;
+}
+
+// onError Callback receives a PositionError object
+function onError(error) {
+    alert(
+        'code: '    + error.code    + '\n' +
+        'message: ' + error.message + '\n'
+    );
+}
+
+
+</script>
+
+<input type="hidden" id="late" value="">
+<input type="hidden" id="longe" value="">
+
 <a href="http://citifren.com/chat/test.map.php"  target="mapFrame" onclick="showhide('mapFrame')" style="text-decoration:none;">Go Map Click here bro </a>
 <br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:100%; height:100%" ></iframe>
 
