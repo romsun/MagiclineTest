@@ -869,13 +869,33 @@ var lo = document.getElementById("longe").value;
 $("#latlon").load("http://citifren.com/chat/whotochat-session.php?latitude="+la+"&longitude="+lo+"");
 }
 
+
+
+// var x=document.getElementById("demo");
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  else{x.innerHTML="Geolocation is not supported by this browser.";}
+  }
+function showPosition(position)
+  {
+  //x.innerHTML="Latitude: " + position.coords.latitude +
+  //"<br>Longitude: " + position.coords.longitude;
+  $("#latlon").load("http://citifren.com/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
+
+  }
 </script>
+
+
 
 <form id="latlonge">
 <input type="hidden" id="late" value="">
 <input type="hidden" id="longe" name="longe" value="139.6852746">
 </form>
-<a href="http://citifren.com/chat/test.map.php"  target="mapFrame" onclick="showhide('mapFrame'); latlon();" style="text-decoration:none;">Go Map Click here bro </a>
+<a href="http://citifren.com/chat/test.map.php"  target="mapFrame" onclick="showhide('mapFrame'); getLocation();" style="text-decoration:none;">Go Map Click here bro </a>
 <br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:100%; height:100%" ></iframe>
 
 
