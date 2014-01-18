@@ -852,111 +852,61 @@ function showPosition(position)
   }
 </script>
 
-<script>
 
-//*********************************************************    
-// Capture Capabilities
-//*********************************************************
-function updateCaptureStatus(status) {
-    $("#captureStatus").html(status);
-}
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" charset="utf-8" src="json2.js"></script>
+    <script type="text/javascript" charset="utf-8">
 
-function clearDisplayStatus() {
-    $("#captureProperties").css("display", "none");
-    $("#captureProperties").empty();
-    $("#captureStatus").empty();        
-}  
-
-function goCapture(captureType) {
-    $("#captureProperties").append("
-Capture - " + captureType + "
-");
-   
+    // Called when capture operation is finished
+    //
     function captureSuccess(mediaFiles) {
         var i, len;
-        var mediaDetails = "";
-       
-        for (i = 0, len=mediaFiles.length; i < len; i++) {
-            mediaDetails += addGridRow("a", boldLabel("File full path:"));
-            mediaDetails += addGridRow("b", textFormat(mediaFiles[i].fullPath));
-           
-            mediaDetails += addGridRow("a", boldLabel("Type:"));
-            mediaDetails += addGridRow("b", textFormat(mediaFiles[i].type));
-           
-            mediaDetails += addGridRow("a", boldLabel("Last modified:"));
-            mediaDetails += addGridRow("b", toDateStr(new Date(mediaFiles[i].lastModifiedDate)));
-           
-            mediaDetails += addGridRow("a", boldLabel("Size:"));
-            mediaDetails += addGridRow("b", textFormat(mediaFiles[i].size));
-        }
-        $("#captureProperties").css("display", "block");
-        //$("#captureProperties").append(mediaDetails).trigger("create");
-        $("#captureProperties").html(mediaDetails);
-       
-        updateCaptureStatus("SUCCESS: "  + captureType.slice(0,1).toUpperCase() + captureType.slice(1) + " captured");
+        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+            uploadFile(mediaFiles[i]);
+        }       
     }
-   
+
+    // Called if something bad happens.
+    // 
     function captureError(error) {
-        var errors = {};
-        errors[CaptureError.CAPTURE_INTERNAL_ERR]     = 'Camera or microphone failed to capture image or sound.';
-        errors[CaptureError.CAPTURE_APPLICATION_BUSY] = 'Camera application or audio capture application is currently serving other capture request.';
-        errors[CaptureError.CAPTURE_INVALID_ARGUMENT] = 'Invalid use of the API (e.g. limit parameter has value less than one).';
-        errors[CaptureError.CAPTURE_NO_MEDIA_FILES]   = 'User exited camera application or audio capture application before capturing anything.';
-        errors[CaptureError.CAPTURE_NOT_SUPPORTED]    = 'The requested capture operation is not supported.';
-       
-        var contents  = addGridRow("a", boldLabel("ERROR:"));
-            contents += addGridRow("b", errors[error.code]);
-       
-        $("#captureProperties").css("display", "block");                
-        $("#captureProperties").html(contents);
-       
-        updateCaptureStatus("ERROR");
+        var msg = 'An error occurred during capture: ' + error.code;
+        navigator.notification.alert(msg, null, 'Uh oh!');
     }
 
-    clearDisplayStatus();
-    switch(captureType) {
-        case "audio":
-            navigator.device.capture.captureAudio(captureSuccess, captureError);
-            break;
-        case "image":
-            navigator.device.capture.captureImage(captureSuccess, captureError);
-            break;      
-        case "video":
-            navigator.device.capture.captureVideo(captureSuccess, captureError);
-            break;          
-    }    
-}
+    // A button will call this function
+    //
+    function captureAudio() {
+        // Launch device audio recording application, 
+        // allowing user to capture up to 2 audio clips
+        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 2});
+    }
 
-function getCaptureReady() {
-    clearDisplayStatus();
-    $("#captureAudioButton").on('vclick', function(e){
-        e.preventDefault();
-        goCapture('audio');
-        return false;
-    });
-    $("#captureImageButton").on('vclick', function(e){
-        e.preventDefault();
-        goCapture('image');
-        return false;
-    });
-    $("#captureVideoButton").on('vclick', function(e){
-        e.preventDefault();
-        goCapture('video');
-        return false;
-    });
-}  
+    // Upload files to server
+    function uploadFile(mediaFile) {
+        var ft = new FileTransfer(),
+            path = mediaFile.fullPath,
+            name = mediaFile.name;
 
-//*********************************************************    
-// initialize the environment
-//*********************************************************    
-$("#captureMainPage").bind("pagebeforeshow", function() { getCaptureReady(); } );
-</script>
+        ft.upload(path,
+            "http://citifren.com/chat/upload.audio.php",
+            function(result) {
+                console.log('Upload success: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes sent');
+            },
+            function(error) {
+                console.log('Error uploading file ' + path + ': ' + error.code);
+            },
+            { fileName: name });   
+    }
+
+    </script>
+
 
 
 <script>
 function kon()
 {
-var kone = $("#longe").val();
+var kone = $("#konfigurasi").val();
 alert("Nilai kon: = "+kone);
 }
 </script>
@@ -974,6 +924,7 @@ alert("Nilai kon: = "+kone);
 <a href="http://citifren.com/chat/test.map.php"  target="mapFrame" onclick="showhide('mapFrame'); getLocation();" style="text-decoration:none;">Update Your Location </a>
 </center>
 
+<button onclick="captureAudio();">Capture Audio</button> <br>
 <br> <a href=# onClick="kon();">Klik kon</a>
 
 <br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:350px; height:380px" ></iframe>
@@ -1005,3 +956,5 @@ alert("Nilai kon: = "+kone);
 </div>
 </body>
 </html>
+
+
