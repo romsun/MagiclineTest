@@ -903,14 +903,6 @@ function showPosition(position)
 
 
 
-<script>
-function kon()
-{
-var kone = $("#konfigurasi").val();
-alert("Nilai kon: = "+kone);
-}
-</script>
-
 <form id="latlonge">
 <input type="hidden" id="late" value="">
 <input type="hidden" id="longe" name="longe" value="139.6852746">
@@ -921,28 +913,16 @@ alert("Nilai kon: = "+kone);
 
 <div>
 <center>
-<a href="http://citifren.com/chat/test.map.php"  target="mapFrame" onclick="showhide('mapFrame'); getLocation();" style="text-decoration:none;">Update Your Location </a>
+<a href="http://citifren.com/chat/test.map.php"  onclick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
+<button>Update Location</button>
+</a>
 </center>
 
 <button onclick="captureAudio();">Capture Audio</button> <br>
-<br> <a href=# onClick="kon();">Klik kon</a>
 
 <br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:350px; height:380px" ></iframe>
 </div>
 
-
-
-
-        <div data-role="content">
-            <ul id="captureControl" data-role="listview" data-inset="true">
-                <li><a href="#" id="captureAudioButton">Capture Audio</a></li>
-                <li><a href="#" id="captureImageButton">Capture Image</a></li>
-                <li><a href="#" id="captureVideoButton">Capture Video</a></li>              
-            </ul>
-            <div id="captureProperties" class="mesgBox ui-grid-a" style="display:none"></div>
-        </div>
-
-<div id="captureStatus"></div>
 
 
 
@@ -956,5 +936,3 @@ alert("Nilai kon: = "+kone);
 </div>
 </body>
 </html>
-
-
