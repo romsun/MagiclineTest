@@ -626,11 +626,17 @@ scrollTop: $("#pushframetop").offset().top
     <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
     <a href="http://citifren.com/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
     </td><td style="width:100%;">
-    <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px" id="chatboxe"></textarea>    
-    </td><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
+    <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px; max-width:400px" id="chatboxe"></textarea>    
+    </td>
+
+    <td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
 
     <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="onkan(); loadData();">
-    </td></tr></table>
+    </td>
+
+    <td><a data-icon="grid" data-role="button" href="record.html" target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);">+</a></td>
+
+    </tr></table>
 
 </div>
 
@@ -917,7 +923,7 @@ function showPosition(position)
 <button>Show Map - Update Location</button></a>
 </center>
 
-<a href="record.html" target="mapFrame" onClick="showhide('mapFrame');" >
+<a href=record.html target="mapFrame" onClick="showhide('mapFrame');" >
 <button >Capture Audio</button>
 </a>
 
