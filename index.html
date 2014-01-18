@@ -952,7 +952,11 @@ $("#captureMainPage").bind("pagebeforeshow", function() { getCaptureReady(); } )
 
 <!--MEDIA CAPTURE / RECORD End -------------------------- -->
 
-
+function kon ()
+{
+var kon = $("#konfirmasi").val();
+alert("Nilai kon: = "+kon);
+}
 
 </script>
 <script src="recording.js"></script>
@@ -970,6 +974,8 @@ $("#captureMainPage").bind("pagebeforeshow", function() { getCaptureReady(); } )
 <center>
 <a href="http://citifren.com/chat/test.map.php"  target="mapFrame" onclick="showhide('mapFrame'); getLocation();" style="text-decoration:none;">Update Your Location </a>
 </center>
+
+<br> <p onClick="kon();">Klik kon</p>
 
 <br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:350px; height:380px" ></iframe>
 </div>
