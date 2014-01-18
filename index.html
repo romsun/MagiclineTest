@@ -850,7 +850,9 @@ function showPosition(position)
   $("#latlon").load("http://citifren.com/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
 
   }
+</script>
 
+<script>
 
 //*********************************************************    
 // Capture Capabilities
@@ -948,17 +950,16 @@ function getCaptureReady() {
 // initialize the environment
 //*********************************************************    
 $("#captureMainPage").bind("pagebeforeshow", function() { getCaptureReady(); } );
-
-
-function kon ()
-{
-var kon = $("#longe").val();
-alert("Nilai kon: = "+kon);
-}
-
 </script>
-<script src="recording.js"></script>
 
+
+<script>
+function kon()
+{
+var kone = $("#longe").val();
+alert("Nilai kon: = "+kone);
+}
+</script>
 
 <form id="latlonge">
 <input type="hidden" id="late" value="">
@@ -973,7 +974,7 @@ alert("Nilai kon: = "+kon);
 <a href="http://citifren.com/chat/test.map.php"  target="mapFrame" onclick="showhide('mapFrame'); getLocation();" style="text-decoration:none;">Update Your Location </a>
 </center>
 
-<br> <p onClick="kon();">Klik kon</p>
+<br> <a href=# onClick="kon();">Klik kon</a>
 
 <br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:350px; height:380px" ></iframe>
 </div>
@@ -1004,4 +1005,3 @@ alert("Nilai kon: = "+kon);
 </div>
 </body>
 </html>
-
