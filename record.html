@@ -31,6 +31,13 @@
         navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 1});
     }
 
+    function captureVideo() {
+        // Launch device video recording application,
+        // allowing user to capture up to 2 video clips
+        navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
+    }
+
+
     // Upload files to server
     function uploadFile(mediaFile) {
         var ft = new FileTransfer(),
@@ -52,8 +59,9 @@
     </script>
     </head>
     <body>
-	<br><br><center>
-        <button onclick="captureAudio();">Click To Speak</button> <br><br>
+	<br><center>
+        <button onclick="captureAudio();">Record Voice</button> <br><br>
+        <button onclick="captureVideo();">Record Video</button> <br><br>
 
         <button onclick="javascript:parent.showhide('uploadFrame');">Close</button><br><br>
 
