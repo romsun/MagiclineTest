@@ -20,7 +20,7 @@
     // 
     function captureError(error) {
         var msg = 'An error occurred during capture: ' + error.code;
-        navigator.notification.alert(msg, null, 'Uh oh!');
+        navigator.notification.alert(msg, null, 'Hadoohh!');
     }
 
     // A button will call this function
@@ -53,7 +53,11 @@
     </head>
     <body>
 	<br><br><center>
-        <button onclick="captureAudio();">Click To Speak</button> <br>
+        <button onclick="captureAudio();">Click To Speak</button> <br><br>
+
+        <button onclick="javascript:parent.showhide('uploadFrame');">Close</button><br><br>
+
+
 	</center>
     </body>
 </html>
