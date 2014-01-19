@@ -877,55 +877,6 @@ function showPosition(position)
 </script>
 
 
-    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8" src="json2.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-    // Called when capture operation is finished
-    //
-    function captureSuccess(mediaFiles) {
-        var i, len;
-        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-            uploadFile(mediaFiles[i]);
-        }       
-    }
-
-    // Called if something bad happens.
-    // 
-    function captureError(error) {
-        var msg = 'An error occurred during capture: ' + error.code;
-        navigator.notification.alert(msg, null, 'Uh oh!');
-    }
-
-    // A button will call this function
-    //
-    function captureAudio() {
-        // Launch device audio recording application, 
-        // allowing user to capture up to 2 audio clips
-        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 1});
-    }
-
-    // Upload files to server
-    function uploadFile(mediaFile) {
-        var ft = new FileTransfer(),
-            path = mediaFile.fullPath,
-            name = mediaFile.name;
-
-        ft.upload(path,
-            "http://citifren.com/chat/upload.audio.php",
-            function(result) {
-                console.log('Upload success: ' + result.responseCode);
-                console.log(result.bytesSent + ' bytes sent');
-            },
-            function(error) {
-                console.log('Error uploading file ' + path + ': ' + error.code);
-            },
-            { fileName: name });   
-    }
-
-    </script>
-
-
 <form id="latlonge">
 <input type="hidden" id="late" value="">
 <input type="hidden" id="longe" name="longe" value="139.6852746">
@@ -939,6 +890,10 @@ function showPosition(position)
 <a href="http://citifren.com/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
 <button>Show Map - Update Location</button></a>
 </center>
+
+<a href=record.html target="mapFrame" onClick="showhide('mapFrame');" >
+<button >Capture Audio</button>
+</a>
 
 <br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:330px; height:380px" ></iframe>
 </div>
