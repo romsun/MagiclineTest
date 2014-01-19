@@ -412,6 +412,23 @@ iframe {
     margin: 0px auto;
 }
 
+div.playaudio {
+        background-color: #a9e2f3;
+        background-image: -moz-linear-gradient(top, #a9e2f3, #dedede);
+        position: relative;
+        color: #000000;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 30px #dedede;
+        margin: 5px;
+        min-height: 25px;
+        border: 1px solid #1AB5E0;
+        text-shadow: 0 0 1px #6e6e6e;
+
+        /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;*/
+}
+
+
 </style>
 
 <script type="text/javascript">
@@ -516,7 +533,7 @@ function setWelcome()
 	<div data-role="header">
 	<h1><font color="#dedede"><font color=#df0101>Citi</font><font color=#a4a4a4>Fren</font></font></h1>
     	<a href="#satu" onclick="setWelcome()" data-icon="home">Home</a>
-    	<a href="#dua" data-iconpos="right" data-icon="grid">></a>
+    	<a href="#dua" data-iconpos="right" data-icon="grid" onClick="offkan()">></a>
 
 	</div><!-- /header -->
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
@@ -885,7 +902,7 @@ function showPosition(position)
     function captureAudio() {
         // Launch device audio recording application, 
         // allowing user to capture up to 2 audio clips
-        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 2});
+        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 1});
     }
 
     // Upload files to server
