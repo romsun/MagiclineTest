@@ -887,7 +887,7 @@ function showPosition(position)
 </form>
 
 
-
+<div id="kontak">Daftar Kontak</div>
 
 <div>
 <center>
@@ -916,5 +916,45 @@ function showPosition(position)
 
 
 </div>
+
+
+
+<script>
+$("#kontak").live('click',function(){
+
+    var options = new ContactFindOptions();
+
+    options.multiple  = true;
+    var fields = ["displayName","phoneNumbers"];//["displayName", "name","phoneNumbers"];
+    navigator.contacts.find(fields, onContactSuccess, onContactError, options);
+});
+
+function onContactSuccess(contacts) {//alert(contacts.length);
+
+    for (var i=0; i<contacts.length; i++) {
+
+        // display phone numbers
+
+        if(contacts[i].phoneNumbers != null)  // Checking if not null
+            for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
+                alert("Type: " + contacts[i].phoneNumbers[j].type + "\n" +
+                    "Value: "  + contacts[i].phoneNumbers[j].value + "\n" +
+                    "Preferred: "  + contacts[i].phoneNumbers[j].pref);
+            }
+    }
+};
+
+// onError: Failed to get the contacts
+//
+function onContactError(contactError) {
+    console.log('Error in getting contacts!');
+}
+
+
+</script>
+
+
+
 </body>
 </html>
+
