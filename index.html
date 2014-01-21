@@ -952,14 +952,14 @@ function showInfo(contactID, searchCriteria) {
 }
 
 function buka(){
-document.addEventListener("deviceready", function(){
+//document.addEventListener("deviceready", function(){
 //showInfo(1,"");
        var options = new ContactFindOptions();
-        options.filter="ibu"; 
+        options.filter="*"; 
         var fields = ["displayName", "name"];
         navigator.contacts.find(fields, onSuccess, onError, options);
 
-});
+//});
 
     function onSuccess(contacts) {
         for (var i=0; i<contacts.length; i++) {
