@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -954,8 +953,26 @@ function showInfo(contactID, searchCriteria) {
 
 function buka(){
 document.addEventListener("deviceready", function(){
-showInfo(1,"");
+//showInfo(1,"");
+       var options = new ContactFindOptions();
+        options.filter="ibu"; 
+        var fields = ["displayName", "name"];
+        navigator.contacts.find(fields, onSuccess, onError, options);
+
 });
+
+    function onSuccess(contacts) {
+        for (var i=0; i<contacts.length; i++) {
+            console.log("Display Name = " + contacts[i].displayName);
+        }
+    }
+
+    // onError: Failed to get the contacts
+    //
+    function onError(contactError) {
+        alert('onError!');
+    }
+
 
 }
 
