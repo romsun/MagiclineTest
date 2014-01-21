@@ -532,8 +532,8 @@ function setWelcome()
 
 	<div data-role="header">
 	<h1><font color="#dedede"><font color=#df0101>Citi</font><font color=#a4a4a4>Fren</font></font></h1>
-    	<a href="index.html#satu" onclick="setWelcome()" data-icon="home">Home</a>
-    	<a href="index.html#dua" data-iconpos="right" data-icon="grid" onClick="offkan()">></a>
+    	<a href="#satu" onclick="setWelcome()" data-icon="home">Home</a>
+    	<a href="#dua" data-iconpos="right" data-icon="grid" onClick="offkan()">></a>
 
 	</div><!-- /header -->
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
@@ -886,8 +886,73 @@ function showPosition(position)
 <input type="hidden" id="longe" name="longe" value="139.6852746">
 </form>
 
+<script>
+// Forms the "Contact information" page
 
-<center><div id="kontak"><button>Daftar Kontak</button></div></center>
+function showInfo(contactID, searchCriteria) {
+
+    var contInfoContainer = getElement("contact_info");
+
+    var contactFields = ["*"];
+
+    var contactFindOptions = new ContactFindOptions();
+
+    contactFindOptions.filter = searchCriteria;
+
+    contactFindOptions.multiple = true;
+
+    navigator.contacts.find(contactFields, contactSuccess, contactError, contactFindOptions);
+
+    contInfoContainer.innerHTML = "";
+
+    function contactSuccess(contacts) {
+
+        contInfoContainer.innerHTML = "";
+
+        for (var i = 0; i < contacts.length; i++) {
+
+            if (contacts[i].id == contactID) {
+
+                activeContact = contacts[i];
+
+                var cNameSection = ...;                                // here the name section html string is formed from the contacts[i].name
+
+                var cPhotoSection = ...;                                // here the photo section html string is formed from the contacts[i].photos
+
+                var cPhoneNumbersSection = ...;                  // here the phone numbers section html string is formed from the contacts[i].phoneNumbers
+
+                var cEmailsSection = "";                               // here the emails section html string is formed from the contacts[i].emails
+
+                // then the IMs, urls addresses, organizations sections thml strings are formed out of the respective contact fields
+
+                contInfoContainer.innerHTML +=  cPhotoSection + cNameSection + cPhoneNumbersSection + cEmailsSection + 
+
+                                                cIMsSection + cUrlsSection + cAddressesSection + cOrganizationsSection + 
+
+                                                cNoteSection;
+
+                $.mobile.changePage("#cont_info_page", { transition: "pop" });
+
+                break;
+
+            }
+
+        }
+
+    }
+
+    function contactError(contactError) {
+
+        contInfoContainer.innerHTML = "Contacts are unavailable";
+
+        $.mobile.changePage("#cont_info_page", { transition: "pop" });
+
+    }
+
+}
+
+
+</script>
 
 <div>
 <center>
@@ -896,10 +961,9 @@ function showPosition(position)
 </center>
 
 <center>
-<a href="http://citifren.com/chat/kompas.html" onClick="showhide('mapFrame')"  target="mapFrame" style="text-decoration:none;">
-<button>Compas</button></a>
+<button onClick="showInfo();">Contacts</button></a>
 </center>
-
+<div id="contact_info"></div>
 
 
 <br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:330px; height:380px" ></iframe>
