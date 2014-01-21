@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -891,7 +892,7 @@ function showPosition(position)
 
 function showInfo(contactID, searchCriteria) {
 
-    var contInfoContainer = getElement("contact_info");
+    var contInfoContainer = getElementById("contact_info");
 
     var contactFields = ["*"];
 
@@ -951,6 +952,12 @@ function showInfo(contactID, searchCriteria) {
 
 }
 
+function buka(){
+document.addEventListener("deviceready", function(){
+showInfo();
+});
+
+}
 
 </script>
 
@@ -961,7 +968,7 @@ function showInfo(contactID, searchCriteria) {
 </center>
 
 <center>
-<button onClick="showInfo();">Contacts</button></a>
+<button onClick="buka();">Contacts</button></a>
 </center>
 <div id="contact_info"></div>
 
@@ -1022,5 +1029,3 @@ function onContactError(contactError) {
 
 </body>
 </html>
-
-
