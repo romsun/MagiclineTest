@@ -819,7 +819,6 @@ return "";
 }
 </style>
 
-<body onload="onLoad();">
 <div data-role="page" id="dua" data-theme="a">
 
 
@@ -977,17 +976,10 @@ function buka(){
 
 
 }
-function buat(){
-alert("Buat Kontak ?");
-var myContact = navigator.contacts.create({"displayName": "Test User"});
-        myContact.note = "This contact has a note.";
-        alert("The contact, " + myContact.displayName + ", note: " + myContact.note);
 
-}
 
-function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
+        
+document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 alert("Buat Kontak ?");
@@ -1008,9 +1000,6 @@ var myContact = navigator.contacts.create({"displayName": "Test User"});
 <button>Show Map - Update Location</button></a>
 </center>
 
-<center>
-<button onClick="buat();">Buat</button></a>
-</center>
 
 <center>
 <button onClick="buka();">Contacts</button></a>
