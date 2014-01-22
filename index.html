@@ -975,6 +975,13 @@ function buka(){
 
 
 }
+function buat(){
+var myContact = navigator.contacts.create({"displayName": "Test User"});
+        myContact.note = "This contact has a note.";
+        console.log("The contact, " + myContact.displayName + ", note: " + myContact.note);
+
+}
+
 
 </script>
 
@@ -982,6 +989,10 @@ function buka(){
 <center>
 <a href="http://citifren.com/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
 <button>Show Map - Update Location</button></a>
+</center>
+
+<center>
+<button onClick="buat();">Buat</button></a>
 </center>
 
 <center>
