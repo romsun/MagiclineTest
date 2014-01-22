@@ -540,7 +540,7 @@ function setWelcome()
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
             <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://citifren.com/chat/open.contacts.php" class="trigger">Chat</a></li>
-            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://citifren.com/chat/open.contacts.php" class="trigger">Call</a></li>
+            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://citifren.com/call/index.php" class="trigger">Call</a></li>
 
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#album">Albums</a></li>
 	</ul>
@@ -1002,9 +1002,9 @@ var myContact = navigator.contacts.create({"displayName": "Test User"});
 
 
 <center>
-<button onClick="buka();">Contacts</button></a>
+<a href="http://citifren.com/call/index.php" onClick="showhide('mapFrame'); target="mapFrame" style="text-decoration:none;">
+<button>Call</button></a>
 </center>
-<div id="contact_info"></div>
 
 
 <br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:330px; height:380px" ></iframe>
