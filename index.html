@@ -818,6 +818,8 @@ return "";
 
 }
 </style>
+
+<body onload="onLoad();">
 <div data-role="page" id="dua" data-theme="a">
 
 
@@ -983,8 +985,22 @@ var myContact = navigator.contacts.create({"displayName": "Test User"});
 
 }
 
+function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+function onDeviceReady() {
+alert("Buat Kontak ?");
+var myContact = navigator.contacts.create({"displayName": "Test User"});
+        myContact.note = "This contact has a note.";
+        alert("The contact, " + myContact.displayName + ", note: " + myContact.note);
+
+
+
+    }
 
 </script>
+
 
 <div>
 <center>
