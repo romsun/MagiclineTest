@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -492,7 +491,7 @@ if (user!="")
   //      aphone.value = "Hiaia";
   //var ganti = "Welcome";
   //$('#auth').html(ganti);
-  $('#auth').load('http://citifren.com/chat/welcome.php');
+  $('#contactDiv').load('http://citifren.com/chat/welcome.php');
   }
 else 
   {
@@ -514,6 +513,18 @@ function setWelcome()
   {
   $('#auth').load('http://citifren.com/chat/welcome.php');
   }
+
+
+function showWidth( ele, w ) {
+  $( "#here" ).html( "The width for the " + ele + " is " + w + "px." );
+}
+
+
+$("#bute").click(function() {
+  showWidth( "window", $( window ).width() );
+});
+
+
 
 </script>
   
