@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -515,17 +516,6 @@ function setWelcome()
   }
 
 
-function showWidth( ele, w ) {
-  $( "#here" ).html( "The width for the " + ele + " is " + w + "px." );
-}
-
-
-$("#bute").click(function() {
-  showWidth( "window", $( window ).width() );
-});
-
-
-
 </script>
   
 
@@ -805,7 +795,9 @@ return "";
 
 </script>
 
-
+<script>
+$( document ).ready(function() { $('#auth').load('http://citifren.com/chat/welcome.php'); });
+</script>
 
 
 
