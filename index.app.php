@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+$cookiename = "citifren";
+$value = "08096795005";
+
+if (!isset($_COOKIE['citifren'])) {
+ // setcookie($cookiename,$value, time()+3600*24);
+ // Set non aktif - untuk Android IOS app set menggunakan javascript bukan PHP
+}
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -13,11 +22,9 @@
   <script type="text/javascript" src="jq203.min.js"> </script>
   <script type="text/javascript" src="index.js"> </script>
 
-  <!--  <script src="jquery-1.9.1.min.js"></script> -->
-  <script src="jquery.mobile-1.3.2.min.js"></script>
+  <!-- jQuery and jQuery Mobile -->
 
 
-  <script src="phonegap.js"></script>
 
 <style>
 div#fullyaa.ui-collapsible div.ui-collapsible-content {
@@ -111,11 +118,11 @@ div.photoofweek img{
         position: relative;
         color: #111111;
         padding: 2px;
-        border-radius: 115px;
+        border-radius: 50px;
         box-shadow: 15px 15px 15px #585858;
         margin: 3px;
         min-height: 25px;
-        border: 1px inset #d8d8d8;
+        border: 10px inset #d8d8d8;
         text-shadow: 0 0 1px #6e6e6e;
         /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;*/
 }
@@ -331,18 +338,6 @@ iframe {
   filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=.1);
 }
 
-.loginiframe {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  border-radius: 12px;
-
-}
-
-
 .boxshadow {
   margin-top: 20px;
   margin-bottom: 30px;
@@ -406,37 +401,12 @@ iframe {
   filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=.1);
 }
 
-.trigger {
-    display: block;
-    width: 100%;
-    margin: 0px auto;
-}
-
-div.playaudio {
-        background-color: #a9e2f3;
-        background-image: -moz-linear-gradient(top, #a9e2f3, #dedede);
-        position: relative;
-        color: #000000;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 30px #dedede;
-        margin: 5px;
-        min-height: 25px;
-        border: 1px solid #1AB5E0;
-        text-shadow: 0 0 1px #6e6e6e;
-
-        /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;*/
-}
-
-
-.jeans2 {
-    width: 100%;
-    height: 55px;
-    margin: 0px auto;
-}
-
 
 </style>
+
+<!--  <script src="jquery-1.9.1.min.js"></script> -->
+<script src="jquery.mobile-1.3.2.min.js"></script>
+
 
 <script type="text/javascript">
 $(function() 
@@ -498,7 +468,7 @@ if (user!="")
   //      aphone.value = "Hiaia";
   //var ganti = "Welcome";
   //$('#auth').html(ganti);
-  $('#contactDiv').load('http://citifren.com/chat/welcome.php');
+  $('#auth').load('http://citifren.com/chat/welcome.php');
   }
 else 
   {
@@ -521,14 +491,14 @@ function setWelcome()
   $('#auth').load('http://citifren.com/chat/welcome.php');
   }
 
-
 </script>
   
 
 </head>
+<?php $pagebg = "#01a9db"; ?>
 
 <body onLoad="checkCookie()" bgcolor="#dedede" style="background-image:url();
-  background-color: #01a9db;
+  background-color: <?php echo $pagebg; ?>;
   background-repeat: no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -541,21 +511,20 @@ function setWelcome()
 	<div data-role="header">
 	<h1><font color="#dedede"><font color=#df0101>Citi</font><font color=#a4a4a4>Fren</font></font></h1>
     	<a href="#satu" onclick="setWelcome()" data-icon="home">Home</a>
-    	<a href="#dua" data-iconpos="right" data-icon="grid" onClick="offkan()">></a>
+    	<a href="#dua" data-iconpos="right" data-icon="grid">></a>
 
 	</div><!-- /header -->
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://citifren.com/chat/open.contacts.php" class="trigger">Chat</a></li>
-            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://citifren.com/call/index.php" target="contactFrame" >Call</a></li>
-
+            <li><a data-icon="star" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame'); onkan(); loadData();" onMouseOver="OFFremoveWelcome()">Chat</a></li>
+            <li><a data-icon="gear" data-role="button" href="http://citifren.com/chat/open.contacts.php" target="contactFrame" onClick="removeWelcome(); showcontact('contactFrame')" onMouseOver="removeWelcome()">Call</a></li>
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#album">Albums</a></li>
 	</ul>
 
         </div><!-- /navbar -->
 
-<div data-role="content" style="padding:0; height:90%; width: 100%; background-color:#01a9db; ">
+<div data-role="content" style="padding:0; height:90%; width: 100%; background-color:<?php echo $pagebg; ?>; ">
 <script>
 function showcontact(id){
         if (document.getElementById){
@@ -568,20 +537,27 @@ function showcontact(id){
         }
 }
 </script>
+<?php //include("test.contacts.php");
+        $id = $_COOKIE['citifren'];
+?>
  
         <iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 90%; " src="">Form</iframe>
-<div id = "auth"></div>
+<?php
 
-<div id="contactDiv" style="display:none">This is contents of contact list</div>
+$cek_cookie = $_COOKIE[citifren];
+if ($cek_cookie !== "08096795005")
+{
+
+//echo "Your phone number: $cek_cookie";
+
+}
+
+?>
+<div id="auth" onClick="onkan(); loadData(); checkCookie(); offkan();" onMouseout="onkan(); loadData()" ><br><center>This is authentication page<br>Click here</center><br><br></div>
+
 
 <div data-role="content"  id="chat_place"></div>
 
-<script>
-//$( "#chat_place" ).scroll(function() {
-//$( "#auth" ).append( "<div>Handler for .scroll() called.</div>" );
-//offkan();
-//});
-</script>
 <script>
 
 $(function()
@@ -602,7 +578,6 @@ $(function()
 <script>
 
 function showhide(id){
-
         if (document.getElementById){
             obj = document.getElementById(id);
             if (obj.style.display == "none"){
@@ -614,16 +589,6 @@ function showhide(id){
 }
 
 
-$(document).ready(function(){
-  $('.trigger').click(function(e){
-      e.preventDefault();
-      var link = $(this).attr("href");
-      
-      $('#contactDiv').load(link);
-      
-  });
-});
-
 
 
 function jumpTo(id){
@@ -632,10 +597,8 @@ scrollTop: $("#pushframetop").offset().top
 }, 1500);
 }
 
-//$(document).ready(function(){
 
 </script>
-
 
 <iframe id="uploadFrame" name="uploadFrame" style="display:none; border: 0px" src="">Form</iframe>
 
@@ -649,19 +612,13 @@ scrollTop: $("#pushframetop").offset().top
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
 
     <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-    <a href="http://citifren.com/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
+    <a href="http://citifren.com/chat/upload.form.file.php" target="uploadFrame" onClick="javascript:showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
     </td><td style="width:100%;">
-    <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px; max-width:400px" id="chatboxe"></textarea>    
-    </td>
-
-    <td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
+    <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px" id="chatboxe"></textarea>    
+    </td><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
 
     <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="onkan(); loadData();">
-    </td>
-
-    <td><a data-icon="grid" data-role="button" href="record.html" target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);">+</a></td>
-
-    </tr></table>
+    </td></tr></table>
 
 </div>
 
@@ -694,7 +651,7 @@ function pull_chat_data_from_server() {
         $('#elementinsideiframe').load('test.show.chat.php', function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 1000)
+        window.reloadData = window.setTimeout(loadData, 500)
         }).fadeIn("slow");
         }
 
@@ -743,7 +700,7 @@ function loadData(whotochat) {
         $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
-        window.reloadData = window.setTimeout(loadData, 1000);
+        window.reloadData = window.setTimeout(loadData, 500);
         }).fadeIn("slow");
 
         }else  { window.clearTimeout(window.reloadData);  }
@@ -772,19 +729,9 @@ nilai.value = 0;
 
 function setwhotochat(whotochat)
 {
-setCookieHere("whotochat",whotochat,365);
 	var aphone = document.getElementById("whotochat");
         aphone.value = whotochat;
 }
-
-function setCookieHere(cname,cvalue,exdays)
-{
-var d = new Date();
-d.setTime(d.getTime()+(exdays*24*60*60*1000));
-var expires = "expires="+d.toGMTString();
-document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-
 
 function getCookie(cname)
 {
@@ -800,34 +747,11 @@ return "";
 
 
 </script>
-
-<script>
-$( document ).ready(function() { $('#auth').load('http://citifren.com/chat/welcome.php'); });
-</script>
-
-
-
-
-
-
 </div>
 
 
 
 
-<style>
-.mapframe {
-  position: fixed;
-  margin-top: 5px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 7px;
-
-}
-</style>
 
 <div data-role="page" id="dua" data-theme="a">
 
@@ -838,237 +762,16 @@ $( document ).ready(function() { $('#auth').load('http://citifren.com/chat/welco
         <a href="#satu" data-iconpos="right" data-icon="grid">></a>
 
         </div><!-- /header -->
-
-<div data-role="content">
-
-<script>
-
-function showhide(id){
-
-        if (document.getElementById){
-            obj = document.getElementById(id);
-            if (obj.style.display == "none"){
-                obj.style.display = "";
-            } else {
-                obj.style.display = "none";
-            }
-        }
-}
-</script>
-
-<script>
-
-//    alert(
-//        'Latitude: '           + position.coords.latitude              + "\n" +
-//        'Longitude: '          + position.coords.longitude             + "\n" +
-//        'Altitude: '           + position.coords.altitude              + "\n" +
-//        'Accuracy: '           + position.coords.accuracy              + "\n" +
-//        'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + "\n" +
-//        'Heading: '            + position.coords.heading               + "\n" +
-//        'Speed: '              + position.coords.speed                 + "\n" +
-//        'Timestamp: '          + position.timestamp                    + "\n"
-//        );
-// 35.5941594,139.6852746 - Ishikawai TL
-
-function getLocation()
-  {
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(showPosition);
-    }
-  else{x.innerHTML="Geolocation is not supported by this browser.";}
-  }
-function showPosition(position)
-  {
-  //x.innerHTML="Latitude: " + position.coords.latitude +
-  //"<br>Longitude: " + position.coords.longitude;
-  $("#latlon").load("http://citifren.com/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
-
-  }
-</script>
-
-
-    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8" src="json2.js"></script>
-    <script type="text/javascript" charset="utf-8"></script>
-
-<form id="latlonge">
-<input type="hidden" id="late" value="">
-<input type="hidden" id="longe" name="longe" value="139.6852746">
-</form>
-
-<script>
-// Forms the "Contact information" page
-
-function showInfo(contactID, searchCriteria) {
-
-    var contInfoContainer = getElementById("contact_info");
-
-    var contactFields = ["*"];
-
-    var contactFindOptions = new ContactFindOptions();
-
-    contactFindOptions.filter = searchCriteria;
-
-    contactFindOptions.multiple = true;
-
-    navigator.contacts.find(contactFields, contactSuccess, contactError, contactFindOptions);
-
-    contInfoContainer.innerHTML = "";
-
-    function contactSuccess(contacts) {
-
-        contInfoContainer.innerHTML = "";
-
-        for (var i = 0; i < contacts.length; i++) {
-
-            if (contacts[i].id == contactID) {
-
-                activeContact = contacts[i];
-
-                var cNameSection = ...;                                // here the name section html string is formed from the contacts[i].name
-
-                var cPhotoSection = ...;                                // here the photo section html string is formed from the contacts[i].photos
-
-                var cPhoneNumbersSection = ...;                  // here the phone numbers section html string is formed from the contacts[i].phoneNumbers
-
-                var cEmailsSection = "";                               // here the emails section html string is formed from the contacts[i].emails
-
-                // then the IMs, urls addresses, organizations sections thml strings are formed out of the respective contact fields
-
-                contInfoContainer.innerHTML +=  cPhotoSection + cNameSection + cPhoneNumbersSection + cEmailsSection + 
-
-                                                cIMsSection + cUrlsSection + cAddressesSection + cOrganizationsSection + 
-
-                                                cNoteSection;
-
-                $.mobile.changePage("#cont_info_page", { transition: "pop" });
-
-                break;
-
-            }
-
-        }
-
-    }
-
-    function contactError(contactError) {
-
-        contInfoContainer.innerHTML = "Contacts are unavailable";
-
-        $.mobile.changePage("#cont_info_page", { transition: "pop" });
-
-    }
-
-}
-
-function buka(){
-//document.addEventListener("deviceready", function(){
-//showInfo(1,"");
-       var options = new ContactFindOptions();
-        options.filter="*"; 
-        var fields = ["displayName", "name"];
-        navigator.contacts.find(fields, onSuccess, onError, options);
-
-//});
-
-    function onSuccess(contacts) {
-        for (var i=0; i<contacts.length; i++) {
-            console.log("Display Name = " + contacts[i].displayName);
-        }
-    }
-
-    // onError: Failed to get the contacts
-    //
-    function onError(contactError) {
-        alert('onError!');
-    }
-
-
-}
-
-
-        
-document.addEventListener("deviceready", onDeviceReady, false);
-
-function onDeviceReady() {
-alert("Buat Kontak ?");
-var myContact = navigator.contacts.create({"displayName": "Test User"});
-        myContact.note = "This contact has a note.";
-        alert("The contact, " + myContact.displayName + ", note: " + myContact.note);
-
-
-
-    }
-
-</script>
-
-
-<div>
 <center>
-<a href="http://citifren.com/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
-<button>Show Map - Update Location</button></a>
+Your Profile goes here..!
 </center>
-
-
-<center>
-<a href="http://citifren.com/call/index.php" onClick="showhide('mapFrame')" target="mapFrame" style="text-decoration:none;">
-<button>Call</button></a>
-</center>
-
-
-<br><iframe id="mapFrame" class="mapframe" name="mapFrame" style="display:none; width:330px; height:380px" ></iframe>
-</div>
-
-
 
 
 <div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
-<div id="latlon"></div>
+
 <center>www.citifren.com</center>
-
 </div>
-
-
 </div>
-
-
-
-<script>
-$("#kontak").live('click',function(){
-
-    var options = new ContactFindOptions();
-
-    options.multiple  = true;
-    var fields = ["displayName","phoneNumbers"];//["displayName", "name","phoneNumbers"];
-    navigator.contacts.find(fields, onContactSuccess, onContactError, options);
-});
-
-function onContactSuccess(contacts) {//alert(contacts.length);
-
-    for (var i=0; i<contacts.length; i++) {
-
-        // display phone numbers
-
-        if(contacts[i].phoneNumbers != null)  // Checking if not null
-            for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
-                alert("Type: " + contacts[i].phoneNumbers[j].type + "\n" +
-                    "Value: "  + contacts[i].phoneNumbers[j].value + "\n" +
-                    "Preferred: "  + contacts[i].phoneNumbers[j].pref);
-            }
-    }
-alert("Congrats !");
-};
-
-// onError: Failed to get the contacts
-//
-function onContactError(contactError) {
-    console.log('Error in getting contacts!');
-}
-
-
-</script>
-
 
 
 </body>
