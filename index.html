@@ -498,7 +498,7 @@ if (user!="")
   //      aphone.value = "Hiaia";
   //var ganti = "Welcome";
   //$('#auth').html(ganti);
-  $('#contactDiv').load('http://citifren.com/chat/welcome.php');
+  $('#contactDiv').load('http://192.168.43.5/chat/welcome.php');
   }
 else 
   {
@@ -518,7 +518,7 @@ function removeWelcome()
 
 function setWelcome()
   {
-  $('#auth').load('http://citifren.com/chat/welcome.php');
+  $('#auth').load('http://192.168.43.5/chat/welcome.php');
   }
 
 
@@ -587,7 +587,7 @@ function showcontact(id){
 $(function()
 {
         $('#chatForm').submit(function () {
-            $.post('http://citifren.com/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
+            $.post('http://192.168.43.5/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
                  $('#result').append(data);
         });
 
@@ -649,7 +649,7 @@ scrollTop: $("#pushframetop").offset().top
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
 
     <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-    <a href="http://citifren.com/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
+    <a href="http://192.168.43.5/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
     </td><td style="width:100%;">
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px; max-width:400px" id="chatboxe"></textarea>    
     </td>
@@ -670,7 +670,7 @@ scrollTop: $("#pushframetop").offset().top
 $(function()
 {
         $('#formAddData').submit(function () {
-            $.post('http://citifren.com/lm/lm.put.php', $('#formAddData').serialize(), function (data, textStatus) {
+            $.post('http://192.168.43.5/lm/lm.put.php', $('#formAddData').serialize(), function (data, textStatus) {
                  $('#resultput').append(data);
             });
 
@@ -740,7 +740,7 @@ function loadData(whotochat) {
 	var whotochat = $('#whotochat').val();
 
 
-        $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
+        $('#chat_place').load('http://192.168.43.5/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
         window.reloadData = window.setTimeout(loadData, 1000);
@@ -802,7 +802,7 @@ return "";
 </script>
 
 <script>
-$( document ).ready(function() { $('#auth').load('http://citifren.com/chat/welcome.php'); });
+$( document ).ready(function() { $('#auth').load('http://192.168.43.5/chat/welcome.php'); });
 </script>
 
 
@@ -882,7 +882,7 @@ function showPosition(position)
   {
   //x.innerHTML="Latitude: " + position.coords.latitude +
   //"<br>Longitude: " + position.coords.longitude;
-  $("#latlon").load("http://citifren.com/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
+  $("#latlon").load("http://192.168.43.5/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
 
   }
 </script>
@@ -1006,13 +1006,13 @@ var myContact = navigator.contacts.create({"displayName": "Test User"});
 
 <div>
 <center>
-<a href="http://citifren.com/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
+<a href="http://192.168.43.5/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
 <button>Show Map - Update Location</button></a>
 </center>
 
 
 <center>
-<a href="http://citifren.com/call/index.php" onClick="showhide('mapFrame')" target="mapFrame" style="text-decoration:none;">
+<a href="http://192.168.43.5/call/index.php" onClick="showhide('mapFrame')" target="mapFrame" style="text-decoration:none;">
 <button>Call</button></a>
 </center>
 
