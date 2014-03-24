@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +17,7 @@
   <script src="jquery.mobile-1.3.2.min.js"></script>
 
 
-  <script src="phonegap.js"></script>
+  <script src="cordova.js"></script>
 
 <style>
 div#fullyaa.ui-collapsible div.ui-collapsible-content {
@@ -530,6 +529,45 @@ $("#chat_place").html("");
 </script>
   
 
+
+<script>
+
+function callContact() {
+	document.addEventListener("deviceready", onDeviceReady, false);    
+    }
+
+ function onDeviceReady() {
+        callFetchContacts();
+    }
+
+    function callFetchContacts(){
+        var options = new ContactFindOptions();
+	options.filter="vani"
+        var fields = ["id","name", "displayName", "organizations","emails","phoneNumbers","addresses"];
+        navigator.contacts.find(fields, onSuccess, onError, options);   
+
+    }
+
+    function onSuccess(contacts) {
+
+        alert('Done');
+        alert(contacts.length);
+
+        for(var i = 0; i < contacts.length; i++){
+            alert("Name: " + contacts[i].displayName);
+	    alert("No Telp: " + contacts[i].phoneNumbers);                                                 // use your logic here to display this contact values on screen.
+        }
+
+
+    };
+
+    function onError(contactError) {
+        alert('onError!');
+    }
+
+</script>
+
+
 </head>
 
 <body onLoad="checkCookie()" bgcolor="#dedede" style="background-image:url();
@@ -553,7 +591,7 @@ $("#chat_place").html("");
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
             <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome(); clean_chat_place()"  href="http://192.168.43.5/chat/open.contacts.php" class="trigger">Contacts</a></li>
-            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://192.168.43.5/call/index.php" target="contactFrame" >Call</a></li>
+            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan();  removeWelcome(); callContact()" href="#" target="contactFrame" >Test</a></li>
 
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#albums"  onClick="offkan()">Etc</a></li>
 	</ul>
@@ -1090,6 +1128,9 @@ function onContactError(contactError) {
 
 <div data-role="content">
 <a href=#satu style="text-decoration:none">This is content. Click here to go back</a>
+
+<br><br>
+<p onClick="callContact();">Contacts-Test</p>
 </div>
 
 <div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
