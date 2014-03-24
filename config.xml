@@ -1,3 +1,22 @@
+    <widget  xmlns     = "http://www.w3.org/ns/widgets"
+
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.citifren.CitiFren"
+        version   = "1.0.0">
+
+ 
+        <name>CitiFren</name>
+        <description>
+		Have Fun with CitiFren	
+        </description>
+        <author email="romsun.pramudito@hotmail.com" href="http://citifren.com">
+            CitiFren Team
+        </author>
+        <content src="index.html" />
+        <access origin="*" />
+        <preference name="Fullscreen" value="true" />
+        <preference name="WebViewBounce" value="true" />
+    
 <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -14,3 +33,5 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+
+</widget>
