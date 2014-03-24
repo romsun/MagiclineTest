@@ -17,7 +17,7 @@
   <script src="jquery.mobile-1.3.2.min.js"></script>
 
 
-  <script src="phonegap.js"></script>
+  <script src="cordova.js"></script>
 
 <style>
 div#fullyaa.ui-collapsible div.ui-collapsible-content {
@@ -442,7 +442,7 @@ div.playaudio {
 $(function() 
 {
 	$('#searchForm').submit(function () {
-	    $.post('http://citifren.com/lm/hw/lm.query.php', $('#searchForm').serialize(), function (data, textStatus) {
+	    $.post('http://192.168.43.5/lm/hw/lm.query.php', $('#searchForm').serialize(), function (data, textStatus) {
 		 $('#result').append(data);
 	    });
 
@@ -452,9 +452,8 @@ $(function()
 });
 
 function append_chat_data(){
-$('#chat_place2').append( $('<div>').load("test.show.chat.php") );
+$('#chat_place2').append( $('<div>').load("chat.show.chat.php") );
 }
-
 
 </script>
 
@@ -498,7 +497,7 @@ if (user!="")
   //      aphone.value = "Hiaia";
   //var ganti = "Welcome";
   //$('#auth').html(ganti);
-  $('#contactDiv').load('http://citifren.com/chat/welcome.php');
+  $('#contactDiv').load('http://192.168.43.5/chat/welcome.php');
   }
 else 
   {
@@ -518,12 +517,56 @@ function removeWelcome()
 
 function setWelcome()
   {
-  $('#auth').load('http://citifren.com/chat/welcome.php');
+  $('#auth').load('http://192.168.43.5/chat/welcome.php');
   }
 
+function clean_chat_place()
+{
+$("#chat_place").html("");
+$("#chat_place").html("");
 
+}
 </script>
   
+
+
+<script>
+
+function callContact() {
+	document.addEventListener("deviceready", onDeviceReady, false);    
+    }
+
+ function onDeviceReady() {
+        callFetchContacts();
+    }
+
+    function callFetchContacts(){
+        var options = new ContactFindOptions();
+	options.filter="vani"
+        var fields = ["id","name", "displayName", "organizations","emails","phoneNumbers","addresses"];
+        navigator.contacts.find(fields, onSuccess, onError, options);   
+
+    }
+
+    function onSuccess(contacts) {
+
+        alert('Done');
+        alert(contacts.length);
+
+        for(var i = 0; i < contacts.length; i++){
+            alert("Name: " + contacts[i].displayName);
+	    alert("No Telp: " + contacts[i].phoneNumbers);                                                 // use your logic here to display this contact values on screen.
+        }
+
+
+    };
+
+    function onError(contactError) {
+        alert('onError!');
+    }
+
+</script>
+
 
 </head>
 
@@ -540,17 +583,17 @@ function setWelcome()
 
 	<div data-role="header">
 	<h1><font color="#dedede"><font color=#df0101>Citi</font><font color=#a4a4a4>Fren</font></font></h1>
-    	<a href="#satu" onclick="setWelcome()" data-icon="home">Home</a>
+    	<a href="#satu" onclick="setWelcome(); clean_chat_place()" data-icon="home">Home</a>
     	<a href="#dua" data-iconpos="right" data-icon="grid" onClick="offkan()">></a>
 
 	</div><!-- /header -->
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://citifren.com/chat/open.contacts.php" class="trigger">Chat</a></li>
-            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://citifren.com/call/index.php" target="contactFrame" >Call</a></li>
+            <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome(); clean_chat_place()"  href="http://192.168.43.5/chat/open.contacts.php" class="trigger">Contacts</a></li>
+            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan();  removeWelcome(); callContact()" href="#" target="contactFrame" >Test</a></li>
 
-            <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#album">Albums</a></li>
+            <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#albums"  onClick="offkan()">Etc</a></li>
 	</ul>
 
         </div><!-- /navbar -->
@@ -587,7 +630,7 @@ function showcontact(id){
 $(function()
 {
         $('#chatForm').submit(function () {
-            $.post('http://citifren.com/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
+            $.post('http://192.168.43.5/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
                  $('#result').append(data);
         });
 
@@ -649,7 +692,7 @@ scrollTop: $("#pushframetop").offset().top
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
 
     <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-    <a href="http://citifren.com/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
+    <a href="http://192.168.43.5/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
     </td><td style="width:100%;">
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px; max-width:400px" id="chatboxe"></textarea>    
     </td>
@@ -670,7 +713,7 @@ scrollTop: $("#pushframetop").offset().top
 $(function()
 {
         $('#formAddData').submit(function () {
-            $.post('http://citifren.com/lm/lm.put.php', $('#formAddData').serialize(), function (data, textStatus) {
+            $.post('http://192.168.43.5/lm/lm.put.php', $('#formAddData').serialize(), function (data, textStatus) {
                  $('#resultput').append(data);
             });
 
@@ -691,7 +734,7 @@ p.appendChild(d);
 
 function pull_chat_data_from_server() {
         function loadData() {
-        $('#elementinsideiframe').load('test.show.chat.php', function() {
+        $('#elementinsideiframe').load('chat.show.chat.php', function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
         window.reloadData = window.setTimeout(loadData, 1000)
@@ -740,7 +783,7 @@ function loadData(whotochat) {
 	var whotochat = $('#whotochat').val();
 
 
-        $('#chat_place').load('http://citifren.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
+        $('#chat_place').load('http://192.168.43.5/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
         window.reloadData = window.setTimeout(loadData, 1000);
@@ -802,7 +845,7 @@ return "";
 </script>
 
 <script>
-$( document ).ready(function() { $('#auth').load('http://citifren.com/chat/welcome.php'); });
+$( document ).ready(function() { $('#auth').load('http://192.168.43.5/chat/welcome.php'); });
 </script>
 
 
@@ -882,7 +925,7 @@ function showPosition(position)
   {
   //x.innerHTML="Latitude: " + position.coords.latitude +
   //"<br>Longitude: " + position.coords.longitude;
-  $("#latlon").load("http://citifren.com/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
+  $("#latlon").load("http://192.168.43.5/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
 
   }
 </script>
@@ -1006,13 +1049,13 @@ var myContact = navigator.contacts.create({"displayName": "Test User"});
 
 <div>
 <center>
-<a href="http://citifren.com/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
+<a href="http://192.168.43.5/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
 <button>Show Map - Update Location</button></a>
 </center>
 
 
 <center>
-<a href="http://citifren.com/call/index.php" onClick="showhide('mapFrame')" target="mapFrame" style="text-decoration:none;">
+<a href="http://192.168.43.5/call/index.php" onClick="showhide('mapFrame')" target="mapFrame" style="text-decoration:none;">
 <button>Call</button></a>
 </center>
 
@@ -1028,11 +1071,7 @@ var myContact = navigator.contacts.create({"displayName": "Test User"});
 <center>www.citifren.com</center>
 
 </div>
-
-
 </div>
-
-
 
 <script>
 $("#kontak").live('click',function(){
@@ -1070,8 +1109,37 @@ function onContactError(contactError) {
 </script>
 
 
+</div>
+
+
+
+
+
+
+<div data-role="page" id="albums" data-theme="a">
+
+
+        <div data-role="header">
+        <h1><font color="#dedede"><font color=#df0101>Citi</font><font color=#a4a4a4>Fren</font></font></h1>
+        <a href="#satu" data-icon="home">Home</a>
+        <a href="#satu" data-iconpos="right" data-icon="grid">></a>
+
+        </div><!-- /header -->
+
+<div data-role="content">
+<a href=#satu style="text-decoration:none">This is content. Click here to go back</a>
+
+<br><br>
+<p onClick="callContact();">Contacts-Test</p>
+</div>
+
+<div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
+<div id="latlon"></div>
+<center>www.citifren.com</center>
+</div>
+
+
 
 </body>
 </html>
-
 
