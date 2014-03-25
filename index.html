@@ -2,11 +2,11 @@
 <html>
 <head>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        
 
 <script>
 
-	document.addEventListener("deviceready", onDeviceReady, false);    
+	 
 
  function onDeviceReady() {
         callFetchContacts();
@@ -37,7 +37,7 @@
         alert('onError!');
     }
 
-
+	document.addEventListener("deviceready", onDeviceReady, false);   
 
 </script>
 </head>
@@ -52,7 +52,7 @@
 <br><br>
 
 
-<p href=# onClick="callContact()">Kontak - Klik disini !</p>
+<p href=# onClick="onDeviceReady()">Kontak - Klik disini !</p>
 
 </body>
 
