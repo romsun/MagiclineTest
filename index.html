@@ -1130,7 +1130,7 @@ function onContactError(contactError) {
 <a href=#satu style="text-decoration:none">This is content. Click here to go back</a>
 
 <br><br>
-<p onClick="onDeviceReady();">Contacts-Test</p>
+<p onClick="onDeviceReady();">Notification-Test</p>
 </div>
 
 <div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
@@ -1145,7 +1145,18 @@ function onContactError(contactError) {
 
 
  function onDeviceReady() {
-        callFetchContacts();
+        //callFetchContacts();
+var now                  = new Date().getTime(),
+    _60_seconds_from_now = new Date(now + 60*1000);
+
+window.plugin.notification.local.add({
+    id:      1,
+    title:   'Reminder',
+    message: 'Dont forget to buy some flowers.',
+    repeat:  'weekly',
+    date:    _60_seconds_from_now
+});
+
     }
 
     function callFetchContacts(){
