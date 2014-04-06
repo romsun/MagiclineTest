@@ -19,8 +19,8 @@
     </feature>
 
 <feature name="LocalNotification">
-<gap:plugin name="de.appplant.cordova.plugin.local-notification" />
 </feature>
+<gap:plugin name="de.appplant.cordova.plugin.local-notification" />
 
 
 </widget>
