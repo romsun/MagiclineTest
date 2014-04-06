@@ -2,10 +2,10 @@
 <widget id="com.citifren.ctfren" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>CitiFren</name>
     <description>
-        Have Fun With CitiFren !
+        A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <author email="romsun.pramudito@hotmail.com" href="http://cordova.io">
-        CitiFren Team
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -19,8 +19,8 @@
     </feature>
 
 <feature name="LocalNotification">
+        <param name="local-notification"  value="de.appplant.cordova.plugin.localnotification.LocalNotification" />
 </feature>
-<gap:plugin name="de.appplant.cordova.plugin.local-notification" />
 
 
 </widget>
