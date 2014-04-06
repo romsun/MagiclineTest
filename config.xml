@@ -19,7 +19,7 @@
     </feature>
 
 <feature name="LocalNotification">
-        <param name="local-notification"  value="de.appplant.cordova.plugin.localnotification.LocalNotification" />
+        <param name="local-notification"  value="de.appplant.cordova.plugin.local-notification.src.android.LocalNotification" />
 </feature>
 
 

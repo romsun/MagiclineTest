@@ -19,6 +19,28 @@
 
   <script src="cordova.js"></script>
 
+<script>
+
+
+
+//document.addEventListener('deviceready', function () {
+function addNoti(){
+alert("Activating Message Notification");
+var now                  = new Date().getTime(),
+    _60_seconds_from_now = new Date(now + 60*1000);
+
+window.plugin.notification.local.add({
+    id:      1,
+    title:   'Reminder',
+    message: 'Dont forget to buy some flowers.',
+    repeat:  'weekly',
+    date:    _60_seconds_from_now
+});
+//}, false);
+}
+
+</script>
+
 <style>
 div#fullyaa.ui-collapsible div.ui-collapsible-content {
     margin: 1px 0 0 0 ;
@@ -567,6 +589,22 @@ function callContact() {
 
 </script>
 
+<script>
+
+
+var now                  = new Date().getTime(),
+    _60_seconds_from_now = new Date(now + 60*1000);
+
+window.plugin.notification.local.add({
+    id:      1,
+    title:   'Reminder',
+    message: 'Dont forget to buy some flowers.',
+    repeat:  'weekly',
+    date:    _60_seconds_from_now
+});
+
+
+</script>
 
 </head>
 
@@ -591,7 +629,7 @@ function callContact() {
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
             <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome(); clean_chat_place()"  href="http://192.168.43.5/chat/open.contacts.php" class="trigger">Contacts</a></li>
-            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan();  removeWelcome(); callContact()" href="#" target="contactFrame" >Test</a></li>
+            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan();  removeWelcome(); addNoti()" href="#" target="contactFrame" >Test</a></li>
 
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#albums"  onClick="offkan()">Etc</a></li>
 	</ul>
@@ -1130,7 +1168,17 @@ function onContactError(contactError) {
 <a href=#satu style="text-decoration:none">This is content. Click here to go back</a>
 
 <br><br>
-<p onClick="onDeviceReady();">Notification-Test</p>
+<p onClick="onDeviceReady();">Contacts-Testo</p>
+<br>
+<br>
+
+<div id="contactStorage">
+</div>
+
+<br><br>
+<br><br>
+<p onClick="vibrasi();">Vibrasih</p>
+
 </div>
 
 <div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
@@ -1145,24 +1193,13 @@ function onContactError(contactError) {
 
 
  function onDeviceReady() {
-        //callFetchContacts();
-var now                  = new Date().getTime(),
-    _60_seconds_from_now = new Date(now + 60*1000);
-
-window.plugin.notification.local.add({
-    id:      1,
-    title:   'Reminder',
-    message: 'Dont forget to buy some flowers.',
-    repeat:  'weekly',
-    date:    _60_seconds_from_now
-});
-
+        callFetchContacts();
     }
 
     function callFetchContacts(){
         var options = new ContactFindOptions();
         options.multiple=true;
-	options.filter="ade"
+	options.filter="gede"
         var fields = ["id","name", "displayName", "organizations","emails","phoneNumbers","addresses"];
         navigator.contacts.find(fields, onSuccess, onError, options);   
 
@@ -1170,11 +1207,18 @@ window.plugin.notification.local.add({
 
     function onSuccess(contacts) {
 
-        alert('Done');
+        //alert('Done');
         alert(contacts.length);
 
         for(var i = 0; i < contacts.length; i++){
-            alert("Name: " + contacts[i].displayName + contacts[i].phoneNumbers);
+
+		if(contacts[i].phoneNumbers != null) {
+		for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
+		$( "#contactStorage" ).append( "<div><table><tr><td><img src=images/phonebook-icon.png></td><td> " + contacts[i].displayName + "<br>" + contacts[i].phoneNumbers[j].value + "</td></tr></table></div>" );		
+		}
+			
+		}
+	
         }
 
 
@@ -1185,6 +1229,10 @@ window.plugin.notification.local.add({
     }
 
 //	document.addEventListener("deviceready", onDeviceReady, false);   
+
+ function vibrasi() {
+        navigator.notification.vibrate(2500);
+    }
 
 </script>
 
