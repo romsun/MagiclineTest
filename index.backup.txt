@@ -1130,7 +1130,7 @@ function onContactError(contactError) {
 <a href=#satu style="text-decoration:none">This is content. Click here to go back</a>
 
 <br><br>
-<p onClick="callContact();">Contacts-Test</p>
+<p onClick="onDeviceReady();">Contacts-Test</p>
 </div>
 
 <div  data-role="footer" data-position="fixed" class="ui-bar" data-id="myfoot">
@@ -1138,6 +1138,44 @@ function onContactError(contactError) {
 <center>www.citifren.com</center>
 </div>
 
+<script>
+
+
+	 
+
+
+ function onDeviceReady() {
+        callFetchContacts();
+    }
+
+    function callFetchContacts(){
+        var options = new ContactFindOptions();
+        options.multiple=true;
+	options.filter="ade"
+        var fields = ["id","name", "displayName", "organizations","emails","phoneNumbers","addresses"];
+        navigator.contacts.find(fields, onSuccess, onError, options);   
+
+    }
+
+    function onSuccess(contacts) {
+
+        alert('Done');
+        alert(contacts.length);
+
+        for(var i = 0; i < contacts.length; i++){
+            alert("Name: " + contacts[i].displayName + contacts[i].phoneNumbers);
+        }
+
+
+    };
+
+    function onError(contactError) {
+        alert('onError!');
+    }
+
+//	document.addEventListener("deviceready", onDeviceReady, false);   
+
+</script>
 
 
 </body>

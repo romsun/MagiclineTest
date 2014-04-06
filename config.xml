@@ -1,28 +1,26 @@
-<widget  xmlns     = "http://www.w3.org/ns/widgets"
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.citifren.ctfren" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>CitiFren</name>
+    <description>
+        Have Fun With CitiFren !
+    </description>
+    <author email="romsun.pramudito@hotmail.com" href="http://cordova.io">
+        CitiFren Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
 
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.citifren.CitiFren"
-        version   = "1.0.0">
+<feature name="Device">
+        <param name="android-package"  value="org.apache.cordova.device.Contacts" />
+</feature>
 
- 
-        <name>CitiFren</name>
-        <description>
-		Have Fun with CitiFren	
-        </description>
-        <author email="romsun.pramudito@hotmail.com" href="http://citifren.com">
-            CitiFren Team
-        </author>
-        <content src="index.html" />
-        <access origin="*" />
-        <preference name="Fullscreen" value="true" />
-        <preference name="WebViewBounce" value="true" />
-    
-<gap:config-file platform="android" parent="/manifest">
+<feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
 
-
-</gap:config-file>
-
-
+<feature name="LocalNotification">
+<gap:plugin name="de.appplant.cordova.plugin.local-notification" />
+</feature>
 
 
 </widget>
