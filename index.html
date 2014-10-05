@@ -464,7 +464,7 @@ div.playaudio {
 $(function() 
 {
 	$('#searchForm').submit(function () {
-	    $.post('http://192.168.43.5/lm/hw/lm.query.php', $('#searchForm').serialize(), function (data, textStatus) {
+	    $.post('http://192.168.138.130/lm/hw/lm.query.php', $('#searchForm').serialize(), function (data, textStatus) {
 		 $('#result').append(data);
 	    });
 
@@ -519,7 +519,7 @@ if (user!="")
   //      aphone.value = "Hiaia";
   //var ganti = "Welcome";
   //$('#auth').html(ganti);
-  $('#contactDiv').load('http://192.168.43.5/chat/welcome.php');
+  $('#contactDiv').load('http://192.168.138.130/chat/welcome.php');
   }
 else 
   {
@@ -539,7 +539,7 @@ function removeWelcome()
 
 function setWelcome()
   {
-  $('#auth').load('http://192.168.43.5/chat/welcome.php');
+  $('#auth').load('http://192.168.138.130/chat/welcome.php');
   }
 
 function clean_chat_place()
@@ -628,7 +628,7 @@ window.plugin.notification.local.add({
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome(); clean_chat_place()"  href="http://192.168.43.5/chat/open.contacts.php" class="trigger">Contacts</a></li>
+            <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome(); clean_chat_place()"  href="http://192.168.138.130/chat/open.contacts.php" class="trigger">Contacts</a></li>
             <li><a data-icon="gear" data-role="button" onClick="javascript: offkan();  removeWelcome(); addNoti()" href="#" target="contactFrame" >Test</a></li>
 
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#albums"  onClick="offkan()">Etc</a></li>
@@ -668,7 +668,7 @@ function showcontact(id){
 $(function()
 {
         $('#chatForm').submit(function () {
-            $.post('http://192.168.43.5/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
+            $.post('http://192.168.138.130/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
                  $('#result').append(data);
         });
 
@@ -730,7 +730,7 @@ scrollTop: $("#pushframetop").offset().top
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
 
     <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-    <a href="http://192.168.43.5/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
+    <a href="http://192.168.138.130/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
     </td><td style="width:100%;">
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px; max-width:400px" id="chatboxe"></textarea>    
     </td>
@@ -751,7 +751,7 @@ scrollTop: $("#pushframetop").offset().top
 $(function()
 {
         $('#formAddData').submit(function () {
-            $.post('http://192.168.43.5/lm/lm.put.php', $('#formAddData').serialize(), function (data, textStatus) {
+            $.post('http://192.168.138.130/lm/lm.put.php', $('#formAddData').serialize(), function (data, textStatus) {
                  $('#resultput').append(data);
             });
 
@@ -821,7 +821,7 @@ function loadData(whotochat) {
 	var whotochat = $('#whotochat').val();
 
 
-        $('#chat_place').load('http://192.168.43.5/chat/chat.show.chat.php?whotochat='+whotochat, function() {
+        $('#chat_place').load('http://192.168.138.130/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
         window.reloadData = window.setTimeout(loadData, 1000);
@@ -883,7 +883,7 @@ return "";
 </script>
 
 <script>
-$( document ).ready(function() { $('#auth').load('http://192.168.43.5/chat/welcome.php'); });
+$( document ).ready(function() { $('#auth').load('http://192.168.138.130/chat/welcome.php'); });
 </script>
 
 
@@ -963,7 +963,7 @@ function showPosition(position)
   {
   //x.innerHTML="Latitude: " + position.coords.latitude +
   //"<br>Longitude: " + position.coords.longitude;
-  $("#latlon").load("http://192.168.43.5/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
+  $("#latlon").load("http://192.168.138.130/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
 
   }
 </script>
@@ -1087,13 +1087,13 @@ var myContact = navigator.contacts.create({"displayName": "Test User"});
 
 <div>
 <center>
-<a href="http://192.168.43.5/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
+<a href="http://192.168.138.130/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
 <button>Show Map - Update Location</button></a>
 </center>
 
 
 <center>
-<a href="http://192.168.43.5/call/index.php" onClick="showhide('mapFrame')" target="mapFrame" style="text-decoration:none;">
+<a href="http://192.168.138.130/call/index.php" onClick="showhide('mapFrame')" target="mapFrame" style="text-decoration:none;">
 <button>Call</button></a>
 </center>
 
