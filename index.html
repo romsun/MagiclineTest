@@ -729,8 +729,16 @@ scrollTop: $("#pushframetop").offset().top
     <input type="hidden" id="countervalue" value="0">
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
 
+
+<script>
+	function setCwhotochat(){
+	var whotochat = $('#whotochat').val();
+	setCookieHere("whotochat",whotochat,1);
+	}
+</script>
+
     <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-    <a href="http://rtrw.site88.net/chat/upload.form.file.php?whotochat=<?php echo $_COOKIE['whotochat']; ?>"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
+    <a href="http://rtrw.site88.net/chat/upload.form.file.php?whotochat=<?php echo $_COOKIE['whotochat']; ?>"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop); setCwhotochat();"   style="text-decoration: none" >+</a>
     </td><td style="width:100%;">
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px; max-width:400px" id="chatboxe"></textarea>    
     </td>
