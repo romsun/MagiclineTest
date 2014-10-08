@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<head>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title></title>
@@ -17,29 +17,7 @@
   <script src="jquery.mobile-1.3.2.min.js"></script>
 
 
-  <script src="cordova.js"></script>
-
-<script>
-
-
-
-//document.addEventListener('deviceready', function () {
-function addNoti(){
-alert("Activating Message Notification");
-var now                  = new Date().getTime(),
-    _60_seconds_from_now = new Date(now + 60*1000);
-
-window.plugin.notification.local.add({
-    id:      1,
-    title:   'Reminder',
-    message: 'Dont forget to buy some flowers.',
-    repeat:  'weekly',
-    date:    _60_seconds_from_now
-});
-//}, false);
-}
-
-</script>
+  <script src="phonegap.js"></script>
 
 <style>
 div#fullyaa.ui-collapsible div.ui-collapsible-content {
@@ -123,8 +101,7 @@ div.photo img{
         margin: 5px;
         min-height: 25px;
         border: -10px solid #;
-        text-shadow: 0 0 1px #6e6e6e;
-        /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;*/
+        text-shadow: 0 0 1px #6e6e6e;('818050045022', '2014-04-06 12:56:37', '2014-04-06', 'Gggggg', '6281226544458', '1', '', '', '', 403);
 }
 
 div.photoofweek img{
@@ -146,7 +123,8 @@ div.photoofweek img{
 div.callout {
         background-color: #a9e2f3;
         background-image: -moz-linear-gradient(top, #a9e2f3, #dedede);
-        position: relative;
+        position: relative;('818050045022', '2014-04-06 12:56:37', '2014-04-06', 'Gggggg', '6281226544458', '1', '', '', '', 403);
+
         color: #000000;
         padding: 10px;
         border-radius: 10px;
@@ -398,7 +376,7 @@ iframe {
 
   -moz-box-shadow: 4px 4px 14px #000;
   -webkit-box-shadow: 4px 4px 14px #000;
-  box-shadow: 4px 4px 14px #000;
+  box-shadow: 4px 4px 14px #000;chat.show.chat.php
 
   -moz-transform:rotate(0deg);
   -webkit-transform:rotate(0deg);
@@ -551,61 +529,6 @@ $("#chat_place").html("");
 </script>
   
 
-
-<script>
-
-function callContact() {
-	document.addEventListener("deviceready", onDeviceReady, false);    
-    }
-
- function onDeviceReady() {
-        callFetchContacts();
-    }
-
-    function callFetchContacts(){
-        var options = new ContactFindOptions();
-	options.filter="vani"
-        var fields = ["id","name", "displayName", "organizations","emails","phoneNumbers","addresses"];
-        navigator.contacts.find(fields, onSuccess, onError, options);   
-
-    }
-
-    function onSuccess(contacts) {
-
-        alert('Done');
-        alert(contacts.length);
-
-        for(var i = 0; i < contacts.length; i++){
-            alert("Name: " + contacts[i].displayName);
-	    alert("No Telp: " + contacts[i].phoneNumbers);                                                 // use your logic here to display this contact values on screen.
-        }
-
-
-    };
-
-    function onError(contactError) {
-        alert('onError!');
-    }
-
-</script>
-
-<script>
-
-
-var now                  = new Date().getTime(),
-    _60_seconds_from_now = new Date(now + 60*1000);
-
-window.plugin.notification.local.add({
-    id:      1,
-    title:   'Reminder',
-    message: 'Dont forget to buy some flowers.',
-    repeat:  'weekly',
-    date:    _60_seconds_from_now
-});
-
-
-</script>
-
 </head>
 
 <body onLoad="checkCookie()" bgcolor="#dedede" style="background-image:url();
@@ -629,7 +552,7 @@ window.plugin.notification.local.add({
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
             <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome(); clean_chat_place()"  href="http://rtrw.site88.net/chat/open.contacts.php" class="trigger">Contacts</a></li>
-            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan();  removeWelcome(); addNoti()" href="#" target="contactFrame" >Test</a></li>
+            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://rtrw.site88.net/call/index.php" target="contactFrame" >Call</a></li>
 
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#albums"  onClick="offkan()">Etc</a></li>
 	</ul>
@@ -653,8 +576,9 @@ function showcontact(id){
         <iframe id="contactFrame" name="contactFrame" style="display:none; height:100%; border: 0px; width: 90%; " src="">Form</iframe>
 <div id = "auth"></div>
 
+<center>
 <div id="contactDiv" style="display:none">This is contents of contact list</div>
-
+</center>
 <div data-role="content"  id="chat_place"></div>
 
 <script>
@@ -718,7 +642,7 @@ scrollTop: $("#pushframetop").offset().top
 </script>
 
 
-<iframe id="uploadFrame" name="uploadFrame" style="display:none; border: 0px" src="">Form</iframe>
+<iframe id="uploadFrame" name="uploadFrame" style="display:none; border: 0px; height:500px" src="">Form</iframe>
 
 </div>
 <a href="#pushframetop" id="pushframetop"></a>
@@ -729,16 +653,9 @@ scrollTop: $("#pushframetop").offset().top
     <input type="hidden" id="countervalue" value="0">
     <input type="hidden" id="whotochat" value="9999" name="whotochat">
 
-
-<script>
-	function setCwhotochat(){
-	var whotochat = $('#whotochat').val();
-	setCookieHere("whotochat",whotochat,1);
-	}
-</script>
-
-    <table width=100%><tr><td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-    <a href="http://rtrw.site88.net/chat/upload.form.file.php?whotochat=<?php echo $_COOKIE['whotochat']; ?>"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop); setCwhotochat();"   style="text-decoration: none" >+</a>
+    <table style="width:100%;"><tr>
+    <td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
+    <a href="http://rtrw.site88.net/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
     </td><td style="width:100%;">
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px; max-width:400px" id="chatboxe"></textarea>    
     </td>
@@ -932,7 +849,7 @@ $( document ).ready(function() { $('#auth').load('http://rtrw.site88.net/chat/we
 
 <script>
 
-function showhide(id){
+function showhide(id){('818050045022', '2014-04-06 12:56:37', '2014-04-06', 'Gggggg', '6281226544458', '1', '', '', '', 403);
 
         if (document.getElementById){
             obj = document.getElementById(id);
@@ -1075,9 +992,8 @@ function buka(){
 
 
 }
+('818050045022', '2014-04-06 12:56:37', '2014-04-06', 'Gggggg', '6281226544458', '1', '', '', '', 403);
 
-
-        
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
@@ -1095,7 +1011,7 @@ var myContact = navigator.contacts.create({"displayName": "Test User"});
 
 <div>
 <center>
-<a href="http://rtrw.site88.netchat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
+<a href="http://rtrw.site88.net/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
 <button>Show Map - Update Location</button></a>
 </center>
 
@@ -1173,19 +1089,8 @@ function onContactError(contactError) {
         </div><!-- /header -->
 
 <div data-role="content">
-<a href=#satu style="text-decoration:none">This is content. Click here to go back</a>
+<a href=#satu>This is content. Home</a><br>
 
-<br><br>
-<p onClick="onDeviceReady();">Contacts-Testo</p>
-<br>
-<br>
-
-<div id="contactStorage">
-</div>
-
-<br><br>
-<br><br>
-<p onClick="vibrasi();">Vibrasih</p>
 
 </div>
 
@@ -1194,57 +1099,9 @@ function onContactError(contactError) {
 <center>www.citifren.com</center>
 </div>
 
-<script>
-
-
-	 
-
-
- function onDeviceReady() {
-        callFetchContacts();
-    }
-
-    function callFetchContacts(){
-        var options = new ContactFindOptions();
-        options.multiple=true;
-	options.filter="gede"
-        var fields = ["id","name", "displayName", "organizations","emails","phoneNumbers","addresses"];
-        navigator.contacts.find(fields, onSuccess, onError, options);   
-
-    }
-
-    function onSuccess(contacts) {
-
-        //alert('Done');
-        alert(contacts.length);
-
-        for(var i = 0; i < contacts.length; i++){
-
-		if(contacts[i].phoneNumbers != null) {
-		for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
-		$( "#contactStorage" ).append( "<div><table><tr><td><img src=images/phonebook-icon.png></td><td> " + contacts[i].displayName + "<br>" + contacts[i].phoneNumbers[j].value + "</td></tr></table></div>" );		
-		}
-			
-		}
-	
-        }
-
-
-    };
-
-    function onError(contactError) {
-        alert('onError!');
-    }
-
-//	document.addEventListener("deviceready", onDeviceReady, false);   
-
- function vibrasi() {
-        navigator.notification.vibrate(2500);
-    }
-
-</script>
 
 
 </body>
 </html>
+
 
