@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <meta charset="utf-8">
@@ -442,7 +443,7 @@ div.playaudio {
 $(function() 
 {
 	$('#searchForm').submit(function () {
-	    $.post('http://rtrw.site88.net/lm/hw/lm.query.php', $('#searchForm').serialize(), function (data, textStatus) {
+	    $.post('http://rtrw.hostoi.com/lm/hw/lm.query.php', $('#searchForm').serialize(), function (data, textStatus) {
 		 $('#result').append(data);
 	    });
 
@@ -497,7 +498,7 @@ if (user!="")
   //      aphone.value = "Hiaia";
   //var ganti = "Welcome";
   //$('#auth').html(ganti);
-  $('#contactDiv').load('http://rtrw.site88.net/chat/welcome.php');
+  $('#contactDiv').load('http://rtrw.hostoi.com/chat/welcome.php');
   }
 else 
   {
@@ -517,7 +518,7 @@ function removeWelcome()
 
 function setWelcome()
   {
-  $('#auth').load('http://rtrw.site88.net/chat/welcome.php');
+  $('#auth').load('http://rtrw.hostoi.com/chat/welcome.php');
   }
 
 function clean_chat_place()
@@ -551,8 +552,8 @@ $("#chat_place").html("");
 						<input type="hidden" id="konfirmasi" name="konfirmasi" value="6281226544458">
         <div data-role="navbar" data-type="horizontal" data-mini="true" data-theme="b" class="navigasi">
 	<ul>
-            <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome(); clean_chat_place()"  href="http://rtrw.site88.net/chat/open.contacts.php" class="trigger">Contacts</a></li>
-            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://rtrw.site88.net/call/index.php" target="contactFrame" >Call</a></li>
+            <li><a data-icon="star" data-role="button" onclick="javascript: offkan(); showhide('contactDiv'); removeWelcome(); clean_chat_place()"  href="http://rtrw.hostoi.com/chat/open.contacts.php" class="trigger">Contacts</a></li>
+            <li><a data-icon="gear" data-role="button" onClick="javascript: offkan(); showhide('contactDiv'); removeWelcome();" href="http://rtrw.hostoi.com/call/index.php" target="contactFrame" >Call</a></li>
 
             <li><a data-icon="plus" onMouseOver="removeWelcome()" data-role="button" href="#albums"  onClick="offkan()">Etc</a></li>
 	</ul>
@@ -592,7 +593,7 @@ function showcontact(id){
 $(function()
 {
         $('#chatForm').submit(function () {
-            $.post('http://rtrw.site88.net/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
+            $.post('http://rtrw.hostoi.com/chat/chat.put.msg.doit.php', $('#chatForm').serialize(), function (data, textStatus) {
                  $('#result').append(data);
         });
 
@@ -642,7 +643,7 @@ scrollTop: $("#pushframetop").offset().top
 </script>
 
 
-<iframe id="uploadFrame" name="uploadFrame" style="display:none; border: 0px; height:500px" src="">Form</iframe>
+<iframe id="uploadFrame" name="uploadFrame" style="display:none; border: 0px; height:500px" src="http://rtrw.hostoi.com/chat/upload.form.file.php">Form</iframe>
 
 </div>
 <a href="#pushframetop" id="pushframetop"></a>
@@ -655,7 +656,7 @@ scrollTop: $("#pushframetop").offset().top
 
     <table style="width:100%;"><tr>
     <td data-icon="arrow-r" data-rel="dialog" data-transition="slidedown" class="ui-bar">
-    <a href="http://rtrw.site88.net/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
+    <a href="http://rtrw.hostoi.com/chat/upload.form.file.php"    target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);"   style="text-decoration: none" >+</a>
     </td><td style="width:100%;">
     <textarea name="chat" onClick="offkan()" onMouseover="offkan()" onMouseout="onkan(); loadData()" data-role="field-contain" style="max-height:100px; max-width:400px" id="chatboxe"></textarea>    
     </td>
@@ -665,7 +666,7 @@ scrollTop: $("#pushframetop").offset().top
     <input type=submit name=submit value=">>" class="gobutton" id="submitbutton" onMouseover="offkan()" onClick="onkan(); loadData();">
     </td>
 
-    <td><a data-icon="grid" data-role="button" href=""http://rtrw.site88.net/chat/record.html" target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);">+</a></td>
+    <td><a data-icon="grid" data-role="button" href="record.html" target="uploadFrame" onClick="javascript:offkan(); showhide('uploadFrame'); jumpTo(pushframetop);">+</a></td>
 
     </tr></table>
 
@@ -676,7 +677,7 @@ scrollTop: $("#pushframetop").offset().top
 $(function()
 {
         $('#formAddData').submit(function () {
-            $.post('http://rtrw.site88.net/lm/lm.put.php', $('#formAddData').serialize(), function (data, textStatus) {
+            $.post('http://rtrw.hostoi.com/lm/lm.put.php', $('#formAddData').serialize(), function (data, textStatus) {
                  $('#resultput').append(data);
             });
 
@@ -746,7 +747,7 @@ function loadData(whotochat) {
 	var whotochat = $('#whotochat').val();
 
 
-        $('#chat_place').load('http://rtrw.site88.net/chat/chat.show.chat.php?whotochat='+whotochat, function() {
+        $('#chat_place').load('http://rtrw.hostoi.com/chat/chat.show.chat.php?whotochat='+whotochat, function() {
         if (window.reloadData != 0)
         window.clearTimeout(window.reloadData);
         window.reloadData = window.setTimeout(loadData, 1000);
@@ -808,7 +809,7 @@ return "";
 </script>
 
 <script>
-$( document ).ready(function() { $('#auth').load('http://rtrw.site88.net/chat/welcome.php'); });
+$( document ).ready(function() { $('#auth').load('http://rtrw.hostoi.com/chat/welcome.php'); });
 </script>
 
 
@@ -849,9 +850,7 @@ $( document ).ready(function() { $('#auth').load('http://rtrw.site88.net/chat/we
 
 <script>
 
-function showhide(id){ 
-
-
+function showhide(id){
         if (document.getElementById){
             obj = document.getElementById(id);
             if (obj.style.display == "none"){
@@ -889,7 +888,7 @@ function showPosition(position)
   {
   //x.innerHTML="Latitude: " + position.coords.latitude +
   //"<br>Longitude: " + position.coords.longitude;
-  $("#latlon").load("http://rtrw.site88.net/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
+  $("#latlon").load("http://rtrw.hostoi.com/chat/whotochat-session.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"");
 
   }
 </script>
@@ -1012,7 +1011,7 @@ var myContact = navigator.contacts.create({"displayName": "Test User"});
 
 <div>
 <center>
-<a href="http://rtrw.site88.net/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
+<a href="http://rtrw.hostoi.com/chat/test.map.php" onClick="showhide('mapFrame'); getLocation();" target="mapFrame" style="text-decoration:none;">
 <button>Show Map - Update Location</button></a>
 </center>
 
@@ -1105,8 +1104,3 @@ function onContactError(contactError) {
 </body>
 </html>
 
-
-
-<!-- Hosting24 Analytics Code -->
-<script type="text/javascript" src="http://stats.hosting24.com/count.php"></script>
-<!-- End Of Analytics Code -->
